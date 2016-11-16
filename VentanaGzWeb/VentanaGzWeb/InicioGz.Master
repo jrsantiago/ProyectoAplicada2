@@ -1,0 +1,89 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="InicioGz.master.cs" Inherits="VentanaGzWeb.InicioGz" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>VentanaGz</title>
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="/JQuery/toastr.min.js"></script>
+    <link href="/Boostrap/toastr.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+
+    <style type="text/css">
+        .auto-style8 {
+            width: 1264px;
+            height: 589px;
+        }
+        .auto-style9 {
+            width: 800px;
+            height: 54px;
+        }
+        .auto-style10 {
+            width: 924px;
+            height: 504px;
+        }
+        .auto-style11 {
+            color: #FF0000;
+            width: 586px;
+            height: 30px;
+        }
+        .auto-style12 {
+            color: #000066;
+        }
+        .auto-style13 {
+            width: 106px;
+        }
+        .auto-style14 {
+            height: 36px;
+        }
+        </style>
+  
+</head>
+<body>
+    <form id="form1" runat="server">
+   <table style="font-family:Arial" class="auto-style8">
+       <tr>
+           <td colspan="2" style="background-color:#93beed;text-align:center" class="auto-style9">
+               <h1 class="auto-style11">
+                   <span class="auto-style12" style="font-family:Forte">
+                   VentanaGz </span>
+                  
+               </h1>
+
+           </td>
+       </tr>
+
+       <tr>
+            <td style="background-color:#e1c8c8; class="auto-style13" class="auto-style13" ></td>
+            <td style="background-color:#e8e5e5; " class="auto-style10">
+               
+          
+                     
+                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            
+                             <h2 class="auto-style14"> CONTENIDO DE CADA UNA DE LAS</h2>
+                             
+
+                         </asp:ContentPlaceHolder>
+                  
+            
+                         
+
+           </td>
+       </tr>
+       <tr>
+           <td colspan="2" style="height:80px;background-color:#93beed;">
+              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Informacion web</b>
+
+           </td>
+       </tr>
+
+
+   </table>
+
+    </form>
+</body>
+</html>

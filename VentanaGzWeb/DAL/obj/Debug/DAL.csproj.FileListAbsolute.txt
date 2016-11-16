@@ -1,0 +1,10 @@
+C:\Users\juniorsantiago\Desktop\Aplicada\Proyecto_Apli2\VentanaGzWeb\DAL\bin\Debug\DAL.dll
+C:\Users\juniorsantiago\Desktop\Aplicada\Proyecto_Apli2\VentanaGzWeb\DAL\bin\Debug\DAL.pdb
+C:\Users\juniorsantiago\Desktop\Aplicada\Proyecto_Apli2\VentanaGzWeb\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\juniorsantiago\Desktop\Aplicada\Proyecto_Apli2\VentanaGzWeb\DAL\obj\Debug\DAL.dll
+C:\Users\juniorsantiago\Desktop\Aplicada\Proyecto_Apli2\VentanaGzWeb\DAL\obj\Debug\DAL.pdb
+C:\Users\juniorsantiago\Desktop\Aplicada\VentanaGzWeb\DAL\bin\Debug\DAL.dll
+C:\Users\juniorsantiago\Desktop\Aplicada\VentanaGzWeb\DAL\bin\Debug\DAL.pdb
+C:\Users\juniorsantiago\Desktop\Aplicada\VentanaGzWeb\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\juniorsantiago\Desktop\Aplicada\VentanaGzWeb\DAL\obj\Debug\DAL.dll
+C:\Users\juniorsantiago\Desktop\Aplicada\VentanaGzWeb\DAL\obj\Debug\DAL.pdb
