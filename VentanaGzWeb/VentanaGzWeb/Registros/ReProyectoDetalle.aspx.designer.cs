@@ -31,15 +31,6 @@ namespace VentanaGzWeb.Registros {
         protected global::System.Web.UI.WebControls.Button BuscarProyectoButton;
         
         /// <summary>
-        /// ClienteDropDownList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ClienteDropDownList;
-        
-        /// <summary>
         /// BuscarClienteTextBox control.
         /// </summary>
         /// <remarks>
@@ -155,6 +146,15 @@ namespace VentanaGzWeb.Registros {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TotalTextBox;
+        
+        /// <summary>
+        /// ResumenGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView ResumenGridView;
         
         /// <summary>
         /// ValidationSummary1 control.

@@ -24,14 +24,19 @@ namespace VentanaGzWeb
             //    hilos[i].Start();
             //}
         }
-       //public void metodo()
-       // {
-       //     dele elDelegado = new dele(Mover);
-       //     if (Thread.CurrentThread.Name.Equals("h0"))
-       //     {
-       //        // elDelegado.Invoke(InformacionLabel,);
-       //     }
-       // }
+
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        //public void metodo()
+        // {
+        //     dele elDelegado = new dele(Mover);
+        //     if (Thread.CurrentThread.Name.Equals("h0"))
+        //     {
+        //        // elDelegado.Invoke(InformacionLabel,);
+        //     }
+        // }
         //public void Mover(Label texto,int laY, int Velocidad)
         //{
         //    for(int i =0; 1<500;i++)
@@ -40,6 +45,6 @@ namespace VentanaGzWeb
         //    }
         //}
 
-      
+
     }
 }

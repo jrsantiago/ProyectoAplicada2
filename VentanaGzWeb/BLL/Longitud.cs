@@ -7,13 +7,13 @@ namespace BLL
 {
    public class Longitud
     {
-        public string Trabajo { get; set; }
+        public string Unidad { get; set; }
         public float Ancho { get; set; }
         public float Altura { get; set; }
 
-        public Longitud(string Trabajo,float Ancho, float Altura)
+        public Longitud(string Unidad,float Ancho, float Altura)
         {
-            this.Trabajo = Trabajo;
+            this.Unidad = Unidad;
             this.Ancho = Ancho;
             this.Altura = Altura;
         }

@@ -15,6 +15,7 @@ namespace BLL
         public string Fecha { get; set; }
         public float Total { get; set; }
         public List <ProyectosDetalle> Detalle { get; set; }
+        public List<Longitud> ListaLongitud { get; set; }
 
         public Proyectos()
         {
@@ -24,6 +25,7 @@ namespace BLL
             this.Fecha = "";
             this.Total = 0;
             this.Detalle = new List<ProyectosDetalle>();
+            this.ListaLongitud = new List<Longitud>();
         }
         public void AgregarTrabajos(int ProyectoId,string Descripcion, float Ancho, float Altura, int Cantidad,float Pie, float Precio)
         {
@@ -150,27 +152,32 @@ namespace BLL
             float Ancho = 0;
             float Altura = 0;
             float Resultado = 0;
-            float total = 0;
-
-            float minimo = 0;
+            float Rtotal = 0;
+            float PieNormal = 0;
+            float Pieminimo = 0;
 
             float.TryParse(TexAncho, out Ancho);
             float.TryParse(TexAltura, out Altura);
-            minimo = tra.ObtenerMinimoPie(Trabajo);
 
-             Resultado = Ancho * Altura /144;
+            Pieminimo = tra.ObtenerMinimoPie(Trabajo);
+            PieNormal = tra.ObtenerPie(Trabajo);
+            Resultado = Ancho * Altura /144;
 
-            if(Resultado < minimo)
+            if (Resultado < Pieminimo )
             {
-                total = Resultado * minimo;
+                Rtotal = Pieminimo * PieNormal;
             }
             else
             {
-              total = Resultado * tra.ObtenerPie(Trabajo);
+              Rtotal = Resultado * PieNormal;
             }
 
-            return Total;
+            return Rtotal;
          
+        }
+        public void AgregarLongitud(string Trabajo, float Ancho, float Altura)
+        {
+            this.ListaLongitud.Add(new Longitud(Trabajo, Ancho, Altura));
         }
         
 

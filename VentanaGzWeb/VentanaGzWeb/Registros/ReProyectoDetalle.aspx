@@ -1,12 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/InicioGz.Master" AutoEventWireup="true" CodeBehind="ReProyectoDetalle.aspx.cs" Inherits="VentanaGzWeb.Registros.ReProyectoDetalle" %>
+<%@ Register src="../UserControl/WebUserControl1.ascx" tagname="WebUserControl1" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table style="width:100%;">
         <tr>
-            <td class="text-center" style="height: 87px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Id
+            <td class="text-center" style="height: 87px"> Proyecto Id
                 <asp:TextBox ID="BuscarIdTextBox" runat="server"></asp:TextBox>
 &nbsp;&nbsp;
                 <asp:Button ID="BuscarProyectoButton" runat="server" CssClass="btn btn-primary" OnClick="BuscarProyectoButton_Click" Text="Buscar" Width="90px" />
-            </td>
+            </td> me fui !
         </tr>
         <tr>
             <td class="text-center">&nbsp;&nbsp; 
@@ -16,21 +17,14 @@
             <td>
                 <table style="width: 100%; height: 172px;">
                     <tr>
-                        <td class="auto-style14" style="height: 72px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Buscar Cliente Por&nbsp;&nbsp;
-                            <asp:DropDownList ID="ClienteDropDownList" runat="server" Height="23px" Width="164px">
-                                <asp:ListItem>Id</asp:ListItem>
-                                <asp:ListItem>Cedula</asp:ListItem>
-                                <asp:ListItem>Nombre</asp:ListItem>
-                            </asp:DropDownList>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:TextBox ID="BuscarClienteTextBox" runat="server" ValidationGroup="vg"></asp:TextBox>
+                        <td class="text-center" style="height: 72px"> Cliente Id <asp:TextBox ID="BuscarClienteTextBox" runat="server" ValidationGroup="vg"></asp:TextBox>
 &nbsp;&nbsp;<asp:Button ID="BuscarClienteButton" CssClass="btn btn-primary" runat="server" Text="Buscar" Width="91px" OnClick="BuscarClienteButton_Click" ValidationGroup="vgc" />
                         &nbsp;
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="BuscarClienteTextBox" ErrorMessage="Campo Cliente Vacio" ForeColor="#CC0000" style="font-size: x-large" ValidationGroup="vgc">*</asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style14" style="height: 62px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cliente&nbsp;
+                        <td class="text-center" style="height: 62px">Cliente&nbsp;
                             <asp:TextBox ID="ClienteTextBox" runat="server" Width="168px"></asp:TextBox>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fecha&nbsp;
                             <asp:TextBox ID="FechaTextBox" runat="server" Height="25px" Width="87px"></asp:TextBox>
@@ -38,7 +32,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
                     </tr>
                     <tr>
-                        <td class="auto-style14" style="height: 55px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Articulo &nbsp;<asp:DropDownList ID="TrabajoDropDownList" runat="server" Height="27px" Width="162px">
+                        <td class="text-center" style="height: 55px"> Articulo &nbsp;<asp:DropDownList ID="TrabajoDropDownList" runat="server" Height="27px" Width="162px">
                             </asp:DropDownList>
 &nbsp;&nbsp;Ancho&nbsp;
                             <asp:TextBox ID="AnchoTextBox" runat="server" Width="68px"></asp:TextBox>
@@ -51,15 +45,15 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style14" style="height: 113px">
+                        <td class="text-right" style="height: 113px">
                             <table class="nav-justified">
                                 <tr>
                                     <td style="width: 125px" class="auto-style13">&nbsp;</td>
                                     <td style="width: 661px">
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <div style=" vertical-align: top; overflow: auto; width: 680px; height:
-315px" >
-                                        <asp:GridView ID="DetalleGridView" runat="server" Height="256px" style="margin-left: 88px" Width="544px" AutoGenerateColumns="False" OnRowDataBound="DetalleGridView_RowDataBound">
+                                        <div style=" vertical-align: top; overflow: auto; width: 744px; height:
+375px" >
+                                        <asp:GridView ID="DetalleGridView" runat="server" Height="335px" style="margin-left: 88px" Width="582px" AutoGenerateColumns="False" OnRowDataBound="DetalleGridView_RowDataBound">
                                             <Columns>
                                                 <asp:BoundField DataField="Descripcion" HeaderStyle-BackColor="#5880D7" ItemStyle-BackColor="White" ItemStyle-BorderWidth="2px" HeaderStyle-BorderWidth="3px" HeaderText="Descripcion" >
 <HeaderStyle BackColor="#5880D7" BorderWidth="3px"></HeaderStyle>
@@ -97,11 +91,22 @@
                                             </EmptyDataTemplate>
                                         </asp:GridView>
                                             <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total&nbsp;&nbsp; <asp:TextBox ID="TotalTextBox" runat="server" Width="74px"></asp:TextBox>
+
+Total&nbsp;&nbsp; <asp:TextBox ID="TotalTextBox" runat="server" Width="74px"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <br />
+                                            <br />
+                                            <asp:GridView ID="ResumenGridView" runat="server" AutoGenerateColumns="False" Width="372px">
+                                                <Columns>
+                                                    <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
+                                                    <asp:BoundField DataField="AnchoTotal" HeaderText="Ancho Total" />
+                                                    <asp:BoundField DataField="AlturaTotal" HeaderText="Altura Total" />
+                                                    <asp:BoundField DataField="PieTotal" HeaderText="PieTotal" />
+                                                </Columns>
+                                            </asp:GridView>
                                    </div>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="#CC0000" ValidationGroup="vg" />
+                                      <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="#CC0000" ValidationGroup="vg" />
                                         <asp:ValidationSummary ID="ValidationSummary2" runat="server" ForeColor="#CC0000" ValidationGroup="vgc" />
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
+                                       </td>
                                     <td style="width: 193px">
                                         &nbsp;</td>
                                     <td>&nbsp;</td>
@@ -113,7 +118,7 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style14" style="height: 100px">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+            <td class="text-center" style="height: 100px">
                     &nbsp;
                     &nbsp;
                     &nbsp;&nbsp;<asp:Button ID="GuardarButton" CssClass="btn btn-primary" runat="server" Text="Guardar" Width="99px" OnClick="GuardarButton_Click" />

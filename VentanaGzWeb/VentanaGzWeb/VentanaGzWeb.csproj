@@ -72,7 +72,9 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\toastr.css" />
     <Content Include="css\toastr.min.css" />
+    <Content Include="Default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
     <Content Include="Imagenes\Aha-Soft-Large-Seo-SEO.ico" />
     <Content Include="Imagenes\Arrow-Back-icon.png" />
     <Content Include="Imagenes\Blanco-Griz.jpg" />
@@ -97,13 +99,14 @@
     <Content Include="Registros\ReMateriales.aspx" />
     <Content Include="Registros\ReProyectoDetalle.aspx" />
     <Content Include="Registros\ReUsuario.aspx" />
-    <Content Include="Registros\ReTrabajo.aspx" />
+    <Content Include="Registros\ReProductos.aspx" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="UserControl\WebUserControl1.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +128,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DbVentanaGzWebDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="InicioGz.Master.cs">
       <DependentUpon>InicioGz.Master</DependentUpon>
@@ -179,12 +192,19 @@
     <Compile Include="Registros\ReUsuario.aspx.designer.cs">
       <DependentUpon>ReUsuario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Registros\ReTrabajo.aspx.cs">
-      <DependentUpon>ReTrabajo.aspx</DependentUpon>
+    <Compile Include="Registros\ReProductos.aspx.cs">
+      <DependentUpon>ReProductos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Registros\ReTrabajo.aspx.designer.cs">
-      <DependentUpon>ReTrabajo.aspx</DependentUpon>
+    <Compile Include="Registros\ReProductos.aspx.designer.cs">
+      <DependentUpon>ReProductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\WebUserControl1.ascx.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\WebUserControl1.ascx.designer.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
