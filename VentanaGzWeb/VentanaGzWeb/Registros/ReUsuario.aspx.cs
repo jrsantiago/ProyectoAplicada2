@@ -69,15 +69,7 @@ namespace VentanaGzWeb.Registros
             ContrasenaTextBox.Text = "";
             NombreTextBox.Text = "";
         }
-        public bool Validar()
-        {
-            bool Retornar = false;
-            if (string.IsNullOrWhiteSpace(NombreTextBox.Text) || string.IsNullOrWhiteSpace(ContrasenaTextBox.Text) || string.IsNullOrWhiteSpace(UserNameTextBox.Text))
-            {
-                Retornar = true;
-            }
-            return Retornar;
-        }
+     
 
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
@@ -97,22 +89,18 @@ namespace VentanaGzWeb.Registros
         {
             Usuario usu = new Usuario();
 
-            if (Validar())
-            {
-                //Llenar Todos los Campos... 
-                //Enel dice que si se configura y lo busco aparece de nuevo
-            }
-            else
-            {
+        
+           
+            
                 LlenarValor(usu);
                 if (usu.ValidarUserNombre(UserNameTextBox.Text) == UserNameTextBox.Text)
                 {
-                    Response.Write("<script>alert('Error Nombre Usuario Intente otro Nombre')</script>");
+                    Utilitarios.ShowToastr(this, "Error Nombre Usuario Intente Con Otro", "Mensaje", "error");
 
                 }
                 else if (usu.ValidarContrasena(ContrasenaTextBox.Text) == ContrasenaTextBox.Text)
                 {
-                    Response.Write("<script>alert('Error Contraseña')</script>");
+                    Utilitarios.ShowToastr(this, "Error Contraseña Intente Otra Contraseña", "Mensaje", "error");
 
                 }
                 else if (ContrasenaTextBox.Text != RepitContrasenaTextBox.Text)
@@ -128,7 +116,7 @@ namespace VentanaGzWeb.Registros
 
                         if (usu.Insertar())
                         {
-                            Response.Write("<script>alert('Guardado')</script>");
+                            
                         }
                     }
                     else
@@ -136,29 +124,24 @@ namespace VentanaGzWeb.Registros
                       
                         if (usu.Editar())
                         {
-                            Response.Write("<script>alert('Actualizado')</script>");
+                            
                         }
                     }
-
+                    Utilitarios.ShowToastr(this, "Guardado", "Mensaje", "success");
                 }
-            }
+            
         }
 
         protected void EliminarButton_Click(object sender, EventArgs e)
         {
             Usuario usu = new Usuario();
-            if (string.IsNullOrWhiteSpace(IdTextBox.Text))
-            {
-                Response.Write("<script>alert('Introdusca un Id')</script>");
-            }
-            else
-            {
+           
                
                 usu.UsuarioId = ConvertirId();
                 usu.Eliminar();
-                Response.Write("<script>alert('Eliminado')</script>");
-                Limpiar();
-            }
+            Utilitarios.ShowToastr(this, "Eliminado", "Mensaje", "success");
+            Limpiar();
+            
         }
 
         protected void LimpiarButton_Click(object sender, EventArgs e)

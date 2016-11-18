@@ -3,10 +3,15 @@
     <table style="width:100%;">
         <tr>
             <td class="auto-style14" style="height: 162px; width: 366px">&nbsp;</td>
-            <td class="auto-style14" style="height: 162px">&nbsp;<asp:Label BorderColor="Blue" ID="Label" runat="server" Text="Id" CssClass="auto-style7"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox BorderColor="CadetBlue" CssClass="text-info" ID="IdTextBox" runat="server"></asp:TextBox>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:Button CssClass="btn btn-primary" ID="BuscarButton" runat="server" Text="Buscar" Width="90px" OnClick="BuscarButton_Click" Height="27px" />
+            <td class="auto-style14" style="height: 162px">&nbsp;Buscar Por&nbsp;
+                <asp:DropDownList ID="UsuarioDropDownList" runat="server" Height="22px" Width="192px">
+                    <asp:ListItem Value="Id"></asp:ListItem>
+                    <asp:ListItem>Nombre de Usuario</asp:ListItem>
+                    <asp:ListItem>Nombre</asp:ListItem>
+                    <asp:ListItem>Todos los Usuarios</asp:ListItem>
+                </asp:DropDownList>
+&nbsp; &nbsp;<asp:TextBox BorderColor="CadetBlue" CssClass="text-info" ID="BuscarTextBox" runat="server"></asp:TextBox>
+&nbsp;&nbsp;&nbsp; &nbsp;<asp:Button CssClass="btn btn-primary" ID="BuscarButton" runat="server" Text="Buscar" Width="90px" OnClick="BuscarButton_Click" Height="27px" />
                 <br />
                 <br />
                 <br />

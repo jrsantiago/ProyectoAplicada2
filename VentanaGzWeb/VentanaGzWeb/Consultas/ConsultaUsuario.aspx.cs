@@ -14,33 +14,52 @@ namespace VentanaGzWeb.Consultas
 {
     public partial class ConsUsuario : System.Web.UI.Page
     {
-        Usuario usu = new Usuario();
+     
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-        public int convertirId()
-        {
-            int id = 0;
-            int.TryParse(IdTextBox.Text, out id);
-            return id;
-        }    
-
+    
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
 
             DbVentana cone = new DbVentana();
-
-            int id = convertirId();
-            if (string.IsNullOrWhiteSpace(IdTextBox.Text))
+            Usuario usu = new Usuario();
+            DataTable dt = new DataTable();
+            string Text = "";
+            string orden = "";
+         
+            if (string.IsNullOrWhiteSpace(BuscarTextBox.Text) && UsuarioDropDownList.Text != "Todos los Usuarios")
             {
-                Response.Write("<script>alert('Introdusca Id')</script>");
+                Utilitarios.ShowToastr(this, "Error Campo Incorrecto", "Mensaje", "error");
             }
             else
             {
+                if (UsuarioDropDownList.Text == "Nombre")
+                {
+                    Text = "Where Nombre = ";
+                    orden = BuscarTextBox.Text;
+                }
+                else if (UsuarioDropDownList.Text == "Todos los Usuarios")
+                {
+                    Text = "--";
+                    orden = "--";
+                }
+                else if (UsuarioDropDownList.Text == "Nombre de Usuario")
+                {
+                    Text = " where UserName = ";
+                    orden = BuscarTextBox.Text;
+                }
+                else if (UsuarioDropDownList.Text == "Id")
+                {
+                    Text = " where UsuariosId = ";
+                    orden= BuscarTextBox.Text;
+                }
 
-                DataSet ds = usu.GetData(convertirId());
+             
+
+                DataSet ds = usu.GetData(usu.Listado("*",Text,orden));
 
                 Repeater.DataSource = ds;
                 Repeater.DataBind();
@@ -52,24 +71,6 @@ namespace VentanaGzWeb.Consultas
 
 
         }
-
-        //protected void ImprimirButton_Click(object sender, EventArgs e)
-        //{
-        //    int id = convertirId();
-        //    Usuario usu = new Usuario();
-
-        //    UsuarioReportViewer.LocalReport.DataSources.Clear();
-        //    UsuarioReportViewer.ProcessingMode = ProcessingMode.Local;
-
-        //    UsuarioReportViewer.LocalReport.ReportPath = @"Reportes\ReportUsuario1.rdlc";
-
-        //    ReportDataSource source = new ReportDataSource("Usuario", usu.Listado("*", "UsuarioId=" + IdTextBox.Text, " "));
-
-        //    UsuarioReportViewer.LocalReport.DataSources.Add(source);
-        //    UsuarioReportViewer.LocalReport.Refresh();
-
-
-
-        //}
+       
     }
 }

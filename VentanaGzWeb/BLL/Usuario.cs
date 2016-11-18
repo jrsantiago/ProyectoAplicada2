@@ -108,13 +108,26 @@ namespace BLL
         public override DataTable Listado(string Campos, string Condicion, string Orden)
         {
             DbVentana cone = new DbVentana();
+            DataTable dt = new DataTable();
+            string campo = " '{0}'";
+
             string OrdenFinal = "";
             if (!Orden.Equals(""))
-                OrdenFinal = "Orden by " + Orden;
-            return cone.ObtenerDatos("Select " + Campos + " From Usuarios where " + Condicion + " --");
+                OrdenFinal = "Order by " + Orden;
+
+
+            return dt= cone.ObtenerDatos(String.Format("Select " + Campos + " from Usuarios "+Condicion+campo,Orden));
         }
-        public DataSet GetData(int id)
+        public DataSet GetData(DataTable dt)
         {
+            int id = 0;
+            DbVentana cone = new DbVentana();
+
+            if(dt.Rows.Count > 0)
+            {
+                id = (int)dt.Rows[0]["UsuariosId"];
+            }
+            
 
             string Cs = ConfigurationManager.ConnectionStrings["VentanaDb"].ConnectionString;
             using (SqlConnection con = new SqlConnection(Cs))

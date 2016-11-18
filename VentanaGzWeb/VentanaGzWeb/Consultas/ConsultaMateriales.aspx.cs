@@ -20,10 +20,34 @@ namespace VentanaGzWeb.Consultas
 
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
-      
+            string Text = "";
+            string orden = "";
 
-           MaterialesGridView.DataSource= mate.Listado("*"," where MaterialId="+ BuscarTextBox.Text," --");
-            MaterialesGridView.DataBind();
+            if (string.IsNullOrWhiteSpace(BuscarTextBox.Text) && MaterialesDropDownList.Text != "Todos Los Materiales")
+            {
+                Utilitarios.ShowToastr(this, "Campo Buscar Vacio", "Mensaje", "error");
+            }
+            else
+            {
+                if (MaterialesDropDownList.Text == "Nombre")
+                {
+                    Text = " Where Detalle = ";
+                    orden = BuscarTextBox.Text;
+                }
+                else if (MaterialesDropDownList.Text == "Todos Los Materiales")
+                {
+                    Text = "--";
+                    orden = "--";
+                }
+                else if (MaterialesDropDownList.Text == "Id")
+                {
+                    Text = " where MaterialId = ";
+                    orden = BuscarTextBox.Text;
+                }
+
+                MaterialesGridView.DataSource = mate.Listado("*",Text,orden);
+                MaterialesGridView.DataBind();
+            }
         }
 
         protected void ImprimirButton_Click(object sender, EventArgs e)

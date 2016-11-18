@@ -13,22 +13,22 @@ namespace VentanaGzWeb.Consultas {
     public partial class ConsUsuario {
         
         /// <summary>
-        /// Label control.
+        /// UsuarioDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label;
+        protected global::System.Web.UI.WebControls.DropDownList UsuarioDropDownList;
         
         /// <summary>
-        /// IdTextBox control.
+        /// BuscarTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox IdTextBox;
+        protected global::System.Web.UI.WebControls.TextBox BuscarTextBox;
         
         /// <summary>
         /// BuscarButton control.

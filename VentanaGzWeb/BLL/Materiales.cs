@@ -103,11 +103,13 @@ namespace BLL
         {
             DbVentana cone = new DbVentana();
             DataTable dt = new DataTable();
+            string campo = " '{0}'";
 
             string OrdenFinal = "";
             if (!Orden.Equals(""))
-                OrdenFinal = "Order by " + Orden;
-            return dt = cone.ObtenerDatos("Select " + Campos + " from Materiales where " + Condicion + Orden);
+                OrdenFinal = "Order by " + Orden;   
+           
+            return dt = cone.ObtenerDatos(String.Format("Select " + Campos + " from Materiales " + Condicion + campo, Orden));
         }
 
     }

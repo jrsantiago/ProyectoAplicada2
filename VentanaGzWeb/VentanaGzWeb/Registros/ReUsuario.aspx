@@ -5,8 +5,9 @@
             <td style="height: 135px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label1" runat="server" Text="Id"></asp:Label>
 &nbsp; <asp:TextBox ID="IdTextBox" runat="server" Width="140px" Height="24px" CssClass="auto-style5"></asp:TextBox>
-&nbsp;&nbsp;
-                    <asp:Button CssClass="btn btn-primary" ID="BuscarButton" runat="server" Height="29px" OnClick="BuscarButton_Click" Text="Buscar" Width="116px" />
+&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="IdTextBox" ErrorMessage="Campo Id Vacio" ForeColor="Red" style="font-size: x-large" ValidationGroup="vg2">*</asp:RequiredFieldValidator>
+                        &nbsp;
+                    <asp:Button CssClass="btn btn-primary" ID="BuscarButton" runat="server" Height="29px" OnClick="BuscarButton_Click" Text="Buscar" Width="116px" ValidationGroup="vg2" />
                 </td>
         </tr>
         <tr>
@@ -63,7 +64,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" style="margin-top: 0px" ValidationGroup="vg" />
+                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" style="margin-top: 0px" ValidationGroup="vg" Width="164px" />
+                            <asp:ValidationSummary ID="ValidationSummary2" runat="server" ForeColor="Red" style="margin-top: 0px" ValidationGroup="vg2" Width="164px" />
                         </td>
                     </tr>
                 </table>
