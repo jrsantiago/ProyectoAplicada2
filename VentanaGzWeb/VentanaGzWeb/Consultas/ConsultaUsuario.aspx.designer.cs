@@ -13,6 +13,15 @@ namespace VentanaGzWeb.Consultas {
     public partial class ConsUsuario {
         
         /// <summary>
+        /// UsuarioImagen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image UsuarioImagen;
+        
+        /// <summary>
         /// UsuarioDropDownList control.
         /// </summary>
         /// <remarks>
@@ -38,24 +47,6 @@ namespace VentanaGzWeb.Consultas {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BuscarButton;
-        
-        /// <summary>
-        /// UsuarioLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UsuarioLabel;
-        
-        /// <summary>
-        /// UsuarioImagen control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image UsuarioImagen;
         
         /// <summary>
         /// Repeater control.

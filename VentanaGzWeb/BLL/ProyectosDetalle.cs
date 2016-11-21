@@ -13,16 +13,14 @@ namespace BLL
         public float Pie { get; set; }
         public float Ancho { get; set; }
         public float Altura { get; set; }
-        public int Cantidad { get; set; }
         public float  Precio { get; set; }
         
-        public ProyectosDetalle(int ProyectoId,string Descripcion,float Ancho,float Altura,int Cantidad,float Pie,float Precio)
+        public ProyectosDetalle(int ProyectoId,string Descripcion,float Ancho,float Altura,float Pie,float Precio)
         {
             this.Descripcion = Descripcion;
             this.Ancho = Ancho;
             this.Altura = Altura;
-            this.Pie = Pie;
-            this.Cantidad = Cantidad;
+            this.Pie = Pie;         
             this.Precio = Precio;
 
         }
@@ -34,8 +32,7 @@ namespace BLL
             this.Descripcion = "";
             this.Ancho = 0;
             this.Altura = 0;
-            this.Pie = 0;
-            this.Cantidad = 0;
+            this.Pie = 0;       
             this.Precio = 0;
 
         }

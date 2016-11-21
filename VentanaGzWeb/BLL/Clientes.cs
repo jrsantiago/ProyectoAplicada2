@@ -103,15 +103,16 @@ namespace BLL
 
         public override DataTable Listado(string Campos, string Condicion, string Orden)
         {
-      
             DbVentana cone = new DbVentana();
+            DataTable dt = new DataTable();
+            string campo = " '{0}'";
+
             string OrdenFinal = "";
             if (!Orden.Equals(""))
-            {
                 OrdenFinal = "Order by " + Orden;
+           
 
-            }                
-            return cone.ObtenerDatos("Select " + Campos + " From Clientes "+Condicion+" "+ " ");
+            return dt = cone.ObtenerDatos(String.Format("Select " + Campos + " from Clientes " + Condicion + campo, Orden));
         }
 
         public string ValidarCliente(string Nombre)

@@ -63,8 +63,8 @@ namespace VentanaGzWeb.Consultas
 
                 Repeater.DataSource = ds;
                 Repeater.DataBind();
-                UsuarioImagen.Visible = false;
-                UsuarioLabel.Visible = false;
+               // UsuarioImagen.Visible = false;
+               
 
             }
 

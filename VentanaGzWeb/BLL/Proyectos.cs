@@ -27,25 +27,26 @@ namespace BLL
             this.Detalle = new List<ProyectosDetalle>();
             this.ListaLongitud = new List<Longitud>();
         }
-        public void AgregarTrabajos(int ProyectoId,string Descripcion, float Ancho, float Altura, int Cantidad,float Pie, float Precio)
+        public void AgregarTrabajos(int ProyectoId,string Descripcion, float Ancho, float Altura,float Pie, float Precio)
         {
-            this.Detalle.Add(new ProyectosDetalle(ProyectoId, Descripcion, Ancho, Altura, Cantidad, Pie, Precio));
+            this.Detalle.Add(new ProyectosDetalle(ProyectoId, Descripcion, Ancho, Altura, Pie, Precio));
         }
 
         public override bool Insertar()
         {
             DbVentana cone = new DbVentana();
             int Retornar = 0;
+        
             object Identity;
             try
             {
-                Identity = cone.ObtenerValor(String.Format("Insert into Proyectos(ClienteId,Fecha,Total) Values({0},'{1}',{2}) SELECT @@Identity", this.ClienteId, this.Fecha, this.Total));
+                Identity = cone.ObtenerValor(String.Format("Insert Into Proyectos(Fecha,Total,ClienteId) values(Convert(datetime,'{0}',5),{1},{2}) SELECT @@Identity",this.Fecha ,this.Total, this.ClienteId));
                 int.TryParse(Identity.ToString(), out Retornar);
                 if (Retornar > 0)
                 {
                     foreach (ProyectosDetalle item in this.Detalle)
                     {
-                        cone.Ejecutar(String.Format("Insert Into ProyectosDetalle(ProyectoId,Descripcion,Pie,Ancho,Altura,Cantidad,Precio) Values({0},'{1}',{2},{3},{4},{5},{6})", Retornar, item.Descripcion, item.Pie, item.Ancho, item.Altura, item.Cantidad, item.Precio));
+                        cone.Ejecutar(String.Format("Insert Into ProyectosDetalle(ProyectoId,Descripcion,Pie,Ancho,Altura,Precio) Values({0},'{1}',{2},{3},{4},{5})", Retornar, item.Descripcion, item.Pie, item.Ancho, item.Altura, item.Precio));
                     }
                    
                 }
@@ -71,7 +72,7 @@ namespace BLL
                     cone.Ejecutar(String.Format("Delete from ProyectosDetalle where ProyectoId = {0}", this.ProyectoId));
                     foreach(ProyectosDetalle item in Detalle)
                     {
-                        cone.Ejecutar(String.Format("Insert Into ProyectosDetalle(ProyectoId,Descripcion,Pie,Ancho,Altura,Cantidad,Precio) Values({0},'{1}',{2},{3},{4},{5},{6})", Retornar, item.Descripcion, item.Pie, item.Ancho, item.Altura, item.Cantidad, item.Precio));
+                        cone.Ejecutar(String.Format("Insert Into ProyectosDetalle(ProyectoId,Descripcion,Pie,Ancho,Altura,Cantidad,Precio) Values({0},'{1}',{2},{3},{4},{6})", Retornar, item.Descripcion, item.Pie, item.Ancho, item.Altura,item.Precio));
                     }   
                     
 
@@ -122,7 +123,7 @@ namespace BLL
                 
                     foreach (DataRow row in dtDetalle.Rows)
                     {
-                        AgregarTrabajos(1,row["Descripcion"].ToString(),Convert.ToSingle(row["Ancho"]), Convert.ToSingle(row["Altura"]), (int)row["Cantidad"], Convert.ToSingle(row["Pie"]), Convert.ToSingle(row["Precio"]));
+                        AgregarTrabajos(1,row["Descripcion"].ToString(),Convert.ToSingle(row["Ancho"]), Convert.ToSingle(row["Altura"]),Convert.ToSingle(row["Pie"]), Convert.ToSingle(row["Precio"]));
                     }
             
                 }
@@ -179,7 +180,18 @@ namespace BLL
         {
             this.ListaLongitud.Add(new Longitud(Trabajo, Ancho, Altura));
         }
+        public DataTable ListaConsulta(string Campos, string Condicion, string Orden)
+        {
+            DbVentana cone = new DbVentana();
+            DataTable dt = new DataTable();
         
+            string OrdenFinal = "";
+            if (!Orden.Equals(""))
+                OrdenFinal = "Order by " + Orden;
+
+            return dt = cone.ObtenerDatos(String.Format("Select " + Campos + " from ProyectosDetalle as D inner join Proyectos P on D.ProyectoId = P.ProyectoId " + Condicion + Orden));
+        }
+   
 
     }
 }

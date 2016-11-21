@@ -7,7 +7,7 @@
                 <asp:TextBox ID="BuscarIdTextBox" runat="server"></asp:TextBox>
 &nbsp;&nbsp;
                 <asp:Button ID="BuscarProyectoButton" runat="server" CssClass="btn btn-primary" OnClick="BuscarProyectoButton_Click" Text="Buscar" Width="90px" />
-            </td> me fui !
+            </td> 
         </tr>
         <tr>
             <td class="text-center">&nbsp;&nbsp; 
@@ -25,10 +25,10 @@
                     </tr>
                     <tr>
                         <td class="text-center" style="height: 62px">Cliente&nbsp;
-                            <asp:TextBox ID="ClienteTextBox" runat="server" Width="168px"></asp:TextBox>
+                            <asp:TextBox ID="ClienteTextBox" runat="server" Width="168px" ReadOnly="True"></asp:TextBox>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fecha&nbsp;
-                            <asp:TextBox ID="FechaTextBox" runat="server" Height="25px" Width="87px"></asp:TextBox>
-&nbsp;&nbsp;<br />
+                            <asp:TextBox ID="FechaTextBox" runat="server" Height="25px" Width="84px"></asp:TextBox>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
                     </tr>
                     <tr>
@@ -70,11 +70,6 @@
 
 <ItemStyle BackColor="White" BorderWidth="2px"></ItemStyle>
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="Cantidad" HeaderStyle-BackColor="#5880D7" ItemStyle-BackColor="White" ItemStyle-BorderWidth="2px" HeaderStyle-BorderWidth="3px" HeaderText="Cantidad" >
-<HeaderStyle BackColor="#5880D7" BorderWidth="3px"></HeaderStyle>
-
-<ItemStyle BackColor="White" BorderWidth="2px"></ItemStyle>
-                                                </asp:BoundField>
                                                 <asp:BoundField DataField="Pie" HeaderStyle-BackColor="#5880D7" ItemStyle-BackColor="White" ItemStyle-BorderWidth="2px" HeaderStyle-BorderWidth="3px" HeaderText="Pie" >
 <HeaderStyle BackColor="#5880D7" BorderWidth="3px"></HeaderStyle>
 
@@ -87,7 +82,7 @@
                                                 </asp:BoundField>
                                             </Columns>
                                             <EmptyDataTemplate>
-                                                Descripcion
+                                            
                                             </EmptyDataTemplate>
                                         </asp:GridView>
                                             <br />

@@ -17,7 +17,7 @@ namespace VentanaGzWeb.Registros
       
             if (!IsPostBack)
             {
-                FechaTextBox.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                FechaTextBox.Text = DateTime.Now.ToString("dd/MM/yy");
                 FechaTextBox.ReadOnly = true;
                 AddColumnas();
             }
@@ -50,7 +50,7 @@ namespace VentanaGzWeb.Registros
             DataTable dt = new DataTable();
             DataTable dt2 = new DataTable();
        
-            dt.Columns.AddRange(new DataColumn[6] { new DataColumn("Descripcion"), new DataColumn("Ancho"), new DataColumn("Altura"), new DataColumn("Cantidad"), new DataColumn("Pie"), new DataColumn("Precio")});
+            dt.Columns.AddRange(new DataColumn[5] { new DataColumn("Descripcion"), new DataColumn("Ancho"), new DataColumn("Altura"), new DataColumn("Pie"), new DataColumn("Precio")});
             ViewState["Detalle"] = dt;
 
             dt2.Columns.AddRange(new DataColumn[4] { new DataColumn("Descripcion"), new DataColumn("AnchoTotal"), new DataColumn("AlturaTotal"), new DataColumn("PieTotal") });
@@ -100,7 +100,7 @@ namespace VentanaGzWeb.Registros
 
             foreach(GridViewRow row in DetalleGridView.Rows)
             {
-                Pro.AgregarTrabajos(1, row.Cells[0].Text, Convert.ToSingle(row.Cells[1].Text), Convert.ToSingle(row.Cells[2].Text), Convert.ToInt32(row.Cells[3].Text),Convert.ToSingle(row.Cells[4].Text), Convert.ToSingle(row.Cells[5].Text));
+                Pro.AgregarTrabajos(1, row.Cells[0].Text, Convert.ToSingle(row.Cells[1].Text), Convert.ToSingle(row.Cells[2].Text),Convert.ToSingle(row.Cells[3].Text), Convert.ToSingle(row.Cells[4].Text));
            
             }
 
@@ -114,7 +114,7 @@ namespace VentanaGzWeb.Registros
 
             foreach(var item in pro.Detalle)
             {
-                dt.Rows.Add(item.Descripcion, item.Ancho, item.Altura, item.Cantidad, item.Pie, item.Precio);
+                dt.Rows.Add(item.Descripcion, item.Ancho, item.Altura, item.Pie, item.Precio);
                 ViewState["Detalle"] = dt;
                 ObtenerGridView();
             }
@@ -122,7 +122,7 @@ namespace VentanaGzWeb.Registros
         }
         public float Total()
         {            
-           float total = DetalleGridView.Rows.Cast<GridViewRow>().Sum(x => Convert.ToSingle(x.Cells[5].Text));    
+           float total = DetalleGridView.Rows.Cast<GridViewRow>().Sum(x => Convert.ToSingle(x.Cells[4].Text));    
             return total;
         } 
         public void Limpiar()
@@ -169,9 +169,7 @@ namespace VentanaGzWeb.Registros
             Proyectos pro = new Proyectos();
            
             float Precio = 0;
-            float altura = 0;
-            float ancho = 0;
-            string descripcion = "";
+     
             //ViewState
           
             try
@@ -182,20 +180,17 @@ namespace VentanaGzWeb.Registros
              
                 row["Descripcion"] = TrabajoDropDownList.Text;
                 row["Ancho"] = AnchoTextBox.Text;
-                row["Altura"] = AlturaTextBox.Text;            
-                row["Cantidad"] = 1;
+                row["Altura"] = AlturaTextBox.Text;
                 row["Pie"] = tra.ObtenerPie(TrabajoDropDownList.Text);
-                Precio= pro.Precio(AnchoTextBox.Text,AlturaTextBox.Text,TrabajoDropDownList.Text);   
-                         
+                Precio= pro.Precio(AnchoTextBox.Text,AlturaTextBox.Text,TrabajoDropDownList.Text);                            
                 row["Precio"] = Precio;               
                 dt.Rows.Add(row);
                 ViewState["Detalle"] = dt;
 
                           
-                TotalTextBox.Text =Total().ToString();
+      
                 TrabajoDropDownList.Items.Clear();
                 LlenarDrowList();
-
                 AnchoTextBox.Text = "";
                 AlturaTextBox.Text = "";
 
@@ -226,7 +221,7 @@ namespace VentanaGzWeb.Registros
                
                 ViewState["Resumen"] = dt2;
                 ObtenerGridView();
-
+          TotalTextBox.Text = Total().ToString();
             }
             catch(Exception ex)
             {

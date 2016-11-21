@@ -64,7 +64,9 @@
     <Content Include="App_Data\DbVentanaWeb_log.ldf">
       <DependentUpon>DbVentanaWeb.mdf</DependentUpon>
     </Content>
+    <Content Include="Consultas\ConsultaClientes.aspx" />
     <Content Include="Consultas\ConsultaMateriales.aspx" />
+    <Content Include="Consultas\ConsultaProyecto.aspx" />
     <Content Include="Consultas\ConsultaUsuario.aspx" />
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
@@ -75,15 +77,16 @@
     <Content Include="Default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Imagenes\Aha-Soft-Large-Seo-SEO.ico" />
     <Content Include="Imagenes\Arrow-Back-icon.png" />
     <Content Include="Imagenes\Blanco-Griz.jpg" />
     <Content Include="Imagenes\Calendar-icon.png" />
+    <Content Include="Imagenes\Cliente or usuario.png" />
     <Content Include="Imagenes\event-search-icon.png" />
     <Content Include="Imagenes\images %281%29.jpg" />
     <Content Include="Imagenes\Key-icon.png" />
     <Content Include="Imagenes\Office-Customer-Male-Light-icon.png" />
     <Content Include="Imagenes\Rob-Sanders-Gear-Gear.ico" />
+    <Content Include="Imagenes\SEO-icon %282%29.png" />
     <Content Include="Imagenes\SEO-icon.png" />
     <Content Include="Imagenes\Status-dialog-password-icon.png" />
     <Content Include="Imagenes\user-login-icon.png" />
@@ -110,12 +113,26 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consultas\ConsultaClientes.aspx.cs">
+      <DependentUpon>ConsultaClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultas\ConsultaClientes.aspx.designer.cs">
+      <DependentUpon>ConsultaClientes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\ConsultaMateriales.aspx.cs">
       <DependentUpon>ConsultaMateriales.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Consultas\ConsultaMateriales.aspx.designer.cs">
       <DependentUpon>ConsultaMateriales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\ConsultaProyecto.aspx.cs">
+      <DependentUpon>ConsultaProyecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultas\ConsultaProyecto.aspx.designer.cs">
+      <DependentUpon>ConsultaProyecto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Consultas\ConsultaUsuario.aspx.cs">
       <DependentUpon>ConsultaUsuario.aspx</DependentUpon>
