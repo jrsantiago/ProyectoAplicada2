@@ -2,9 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table style="width:100%;">
         <tr>
-            <td class="text-center" style="height: 142px"> <asp:Image ID="UsuarioImagen" runat="server" Height="77px" ImageUrl='~/Imagenes/Aha-Soft-Large-Seo-SEO.ico' Width="77px" />&nbsp;&nbsp;&nbsp;
+            <td class="text-center" style="height: 142px"> <asp:Image ID="ProductoImagen" runat="server" Height="77px" ImageUrl='~/Imagenes/SEO-icon%20(2).png' Width="77px" />&nbsp;&nbsp;&nbsp;
                 <br />
-                <span  style="font-size: x-large"> Registro de trabajos</span></td>
+                <span  style="font-size: x-large"> Registro Productos</span></td>
         </tr>
         <tr>
             <td class="text-center"  style="height: 76px">
@@ -26,14 +26,14 @@
 &nbsp;
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="DescripcionTextBox" ErrorMessage="Campo Descripcion Vacio" ForeColor="#CC0000" style="font-size: x-large" ValidationGroup="vg">*</asp:RequiredFieldValidator>
                             <br />
-                            Precio pie del Trabajo&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Precio pieProducto&nbsp;&nbsp;
                             <asp:TextBox ID="traTextBox" runat="server" Width="105px"></asp:TextBox>
 &nbsp;
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="traTextBox" ErrorMessage="Campo Precio tra Vacio" ForeColor="#CC0000" style="font-size: x-large" ValidationGroup="vg">*</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="traTextBox" ErrorMessage="Campo Precio Pie Producto Vacio" ForeColor="#CC0000" style="font-size: x-large" ValidationGroup="vg">*</asp:RequiredFieldValidator>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Minimo Pie&nbsp;&nbsp;
-                            <asp:TextBox ID="MinimoPieTextBox" runat="server" Width="105px"></asp:TextBox>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Minimo Pie&nbsp;&nbsp; <asp:TextBox ID="MinimoPieTextBox" runat="server" Width="105px"></asp:TextBox>
 &nbsp;
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="traTextBox" ErrorMessage="Campo Precio tra Vacio" ForeColor="#CC0000" style="font-size: x-large" ValidationGroup="vg">*</asp:RequiredFieldValidator>
                         &nbsp;&nbsp;
@@ -46,10 +46,10 @@
                     <tr>
                         <td class="text-center" style="height: 37px">Material&nbsp;&nbsp;<asp:DropDownList ID="MaterialesDropDownList" runat="server" Height="22px" Width="166px">
                             </asp:DropDownList>
-&nbsp;&nbsp;&nbsp;Asociado&nbsp;&nbsp;<asp:DropDownList ID="RelacionlDropDownList0" runat="server" Height="22px" Width="110px">
+&nbsp;&nbsp;&nbsp;Relacion&nbsp;&nbsp;<asp:DropDownList ID="RelacionlDropDownList0" runat="server" Height="22px" Width="110px">
                                 <asp:ListItem Value="Ancho"></asp:ListItem>
                                 <asp:ListItem Value="Altura"></asp:ListItem>
-                                <asp:ListItem Value="Ninguna"></asp:ListItem>
+                                <asp:ListItem Value="Ninguna">Nada</asp:ListItem>
                             </asp:DropDownList>
 &nbsp;&nbsp;&nbsp;&nbsp;
                             <asp:Button ID="AgregarButton" runat="server" Text="Agregar" OnClick="AgregarButton_Click" />
@@ -67,7 +67,7 @@
                                     <td style="width: 470px">&nbsp;</td>
                                     <td>
                            
-                            <asp:GridView ID="TrabajoGridView" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" Width="200px">
+                            <asp:GridView ID="ProductoGridView" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" Width="200px">
                                 <Columns>
                                     <asp:BoundField DataField="Material" HeaderText="Material" />
                                     <asp:BoundField DataField="Relacion" HeaderText="Relacion" />

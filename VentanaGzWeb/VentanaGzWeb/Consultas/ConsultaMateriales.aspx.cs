@@ -15,7 +15,10 @@ namespace VentanaGzWeb.Consultas
         Materiales mate = new Materiales();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!IsPostBack)
+            {
 
+            }
         }
 
         protected void BuscarButton_Click(object sender, EventArgs e)

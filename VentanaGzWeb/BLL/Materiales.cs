@@ -88,8 +88,7 @@ namespace BLL
 
             try
             {
-                Retornar = cone.Ejecutar(String.Format("Insert into Materiales(Detalle,Unidad,Cantidad,Precio) Values('{0}','{1}',{2},{3})", this.Detalle, this.Unidad, this.Cantidad, this.Precio));
-                cone.Ejecutar(String.Format("Insert into TotalMateriales(Total) Values({0}", this.Precio));
+                Retornar = cone.Ejecutar(String.Format("Insert into Materiales(Detalle,Unidad,Cantidad,Precio) Values('{0}','{1}',{2},{3})", this.Detalle, this.Unidad, this.Cantidad, this.Precio));              
 
             }
             catch (Exception ex)
@@ -107,10 +106,20 @@ namespace BLL
 
             string OrdenFinal = "";
             if (!Orden.Equals(""))
-                OrdenFinal = "Order by " + Orden;   
-           
-            return dt = cone.ObtenerDatos(String.Format("Select " + Campos + " from Materiales " + Condicion + campo, Orden));
+                OrdenFinal = "Order by " + Orden;  
+
+            if(Condicion != string.Empty)
+            {
+                dt = cone.ObtenerDatos(String.Format("Select " + Campos + " from Materiales " + Condicion + campo, Orden));
+            }
+            else
+            {
+                dt = cone.ObtenerDatos(String.Format("Select * from Materiales "));
+            }
+
+            return dt;
         }
+     
 
     }
     

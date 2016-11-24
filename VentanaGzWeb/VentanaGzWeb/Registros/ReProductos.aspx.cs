@@ -17,11 +17,14 @@ namespace VentanaGzWeb.Registros
             if (!IsPostBack)
             {
                 LlenarGridView();
+               
             }
             LlenarDropDownMaterial();
         }
-        public void LlenarValor(Trabajos tra)
+        public void LlenarValor(Productos tra)
         {
+           
+            string asociado = "";
             DataTable dt = (DataTable)ViewState["Detalle"];
 
             DescripcionTextBox.Text = tra.Descripcion;
@@ -31,22 +34,51 @@ namespace VentanaGzWeb.Registros
 
             foreach(var item in tra.Detalle)
             {
+                if (item.Asociacion == 0)
+                {
+                    asociado = "Ancho";
+
+                }
+                else if (item.Asociacion == 1)
+                {
+                    asociado = "Altura";
+                }else
+                {
+                    asociado = "Nada";
+                }
+
+
+
                 dt.Rows.Add(item.Detalle, item.Asociacion);
                 ViewState["Detalle"] = dt;
                 ObtenerGrid();
             }
 
         }
-        public void ObtenerDatos(Trabajos tra)
+        public void ObtenerDatos(Productos tra)
         {
+            int asociado = 0;
             tra.Descripcion = DescripcionTextBox.Text;
             tra.Pie = Convert.ToSingle(traTextBox.Text);
-            tra.TrabajoId = ConvertirId();
+            tra.ProductoId = ConvertirId();
             tra.MinimoPie = Convert.ToSingle(MinimoPieTextBox.Text);
+            
+            
 
-            foreach(GridViewRow row in TrabajoGridView.Rows)
+            foreach(GridViewRow row in ProductoGridView.Rows)
             {
-                tra.AgregarTrabajo(row.Cells[0].Text,row.Cells[1].Text);
+                if(row.Cells[1].Text == "Ancho")
+                {
+                    asociado = 0;
+                }else
+                 if (row.Cells[1].Text == "Altura")
+                {
+                    asociado = 1;
+                }else
+                {
+                    asociado = 2;
+                }
+                tra.AgregarProducto(row.Cells[0].Text,asociado);
             }
         }
         public int ConvertirId()
@@ -63,14 +95,18 @@ namespace VentanaGzWeb.Registros
             traTextBox.Text = "";
             MinimoPieTextBox.Text = "";
 
-            TrabajoGridView.DataSource = null;
-            TrabajoGridView.DataBind();
-
+            LlenarGridView();
+            ObtenerGrid();
+        }
+        public void LimpiarGrid()
+        {
+            LlenarGridView();
+            ObtenerGrid();
         }
         public void ObtenerGrid()
         {
-            TrabajoGridView.DataSource = (DataTable)ViewState["Detalle"];
-            TrabajoGridView.DataBind();
+            ProductoGridView.DataSource = (DataTable)ViewState["Detalle"];
+            ProductoGridView.DataBind();
         }
         public void LlenarGridView()
         {
@@ -83,84 +119,82 @@ namespace VentanaGzWeb.Registros
             DataTable dt = new DataTable();
             Materiales mate = new Materiales();
 
-            dt = mate.Listado("*", "0=0", "ORDER BY Detalle");
+            dt = mate.Listado("*", "--", "--");
             for (int i = 0; i <= dt.Rows.Count - 1; i++)
-                MaterialesDropDownList.Items.Add(Convert.ToString(mate.Listado("*", "0=0", "ORDER BY Detalle").Rows[i]["Detalle"]));
+                MaterialesDropDownList.Items.Add(Convert.ToString(mate.Listado("*", "--", "--").Rows[i]["Detalle"]));
         }
 
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
-            Trabajos tra = new Trabajos();
+            Productos tra = new Productos();
             MaterialesDropDownList.Items.Clear();
             LlenarDropDownMaterial();
-            if (string.IsNullOrWhiteSpace(BuscarTextBox.Text))
-            {
-                //BuscarBacio
-            }else
-            {
+         
 
                 if(tra.Buscar(ConvertirId()))
                 {
+                    LimpiarGrid();
+                    
                     LlenarValor(tra);
 
                 }else
                 {
-                    Response.Write("<script>alert('Id No Existe')</script>");
+                    Utilitarios.ShowToastr(this, "Error Id", "Mensaje", "error");
                 }
-            }
+            
         }
 
         protected void GuardarButton_Click(object sender, EventArgs e)
         {
-            Trabajos tra = new Trabajos();
-            if(string.IsNullOrWhiteSpace(DescripcionTextBox.Text) || string.IsNullOrWhiteSpace(traTextBox.Text))
+            Productos tra = new Productos();
+            if(ProductoGridView.Rows.Count == 0)
             {
+                Utilitarios.ShowToastr(this, "ERROR (Campos Vacios) -- Agregar Materiales", "Mensaje", "error");
 
-            }else
+            }
+            else
             {
                 ObtenerDatos(tra);
                 if (BuscarTextBox.Text == "")
                 {
                     if(tra.Insertar())
                     {
-                        Response.Write("<script>alert('Guardado')</script>");
+                        
                     }
 
                 }else
                 {
-                    tra.TrabajoId = ConvertirId();
+                    tra.ProductoId = ConvertirId();
                     if(tra.Editar())
                     {
-                        Response.Write("<script>alert('Datos Actualizados')</script>");
+                        
                     }
                 }
+                Utilitarios.ShowToastr(this, "Guardado", "Mensaje", "success");
             }
         }
 
         protected void EliminarButton_Click(object sender, EventArgs e)
         {
-            Trabajos tra = new Trabajos();
-            if(string.IsNullOrWhiteSpace(BuscarTextBox.Text))
-            {
-                //Mensaje De Bacio
-            }else
-            {
-                tra.TrabajoId = ConvertirId();
+            Productos tra = new Productos();
+        
+                tra.ProductoId = ConvertirId();
                 if(tra.Eliminar())
                 {                    
-                    Limpiar();
-                    Response.Write("<script>alert('Eliminado')</script>");
-                }else
+                   
+                    Utilitarios.ShowToastr(this, "Eliminado", "Mensaje", "success");
+                }
+                else
                 {
-                    Response.Write("<script>alert('Id No Existe')</script>");
+                    Utilitarios.ShowToastr(this, "Error Id", "Mensaje", "error");
                 }
                 Limpiar();
             }
-        }
-
+        
         protected void LimpiarButton_Click(object sender, EventArgs e)
         {
             Limpiar();
+        
         }
 
         protected void AgregarButton_Click(object sender, EventArgs e)

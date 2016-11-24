@@ -1,0 +1,1 @@
+﻿SELECT * from Proyectos where Fecha between Convert(datetime,'21/11/12',5) AND Convert(datetime,'21/11/16',5);

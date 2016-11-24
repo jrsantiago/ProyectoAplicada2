@@ -149,7 +149,7 @@ namespace BLL
         }
         public float Precio(string TexAncho,string TexAltura,string Trabajo)
         {
-            Trabajos tra = new Trabajos();
+            Productos tra = new Productos();
             float Ancho = 0;
             float Altura = 0;
             float Resultado = 0;

@@ -13,13 +13,13 @@ namespace VentanaGzWeb.Registros {
     public partial class ReVentatra {
         
         /// <summary>
-        /// UsuarioImagen control.
+        /// ProductoImagen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image UsuarioImagen;
+        protected global::System.Web.UI.WebControls.Image ProductoImagen;
         
         /// <summary>
         /// BuscarTextBox control.
@@ -130,13 +130,13 @@ namespace VentanaGzWeb.Registros {
         protected global::System.Web.UI.WebControls.Button AgregarButton;
         
         /// <summary>
-        /// TrabajoGridView control.
+        /// ProductoGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView TrabajoGridView;
+        protected global::System.Web.UI.WebControls.GridView ProductoGridView;
         
         /// <summary>
         /// ValidationSummary2 control.

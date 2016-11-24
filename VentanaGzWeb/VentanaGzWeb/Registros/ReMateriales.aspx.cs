@@ -11,12 +11,15 @@ namespace VentanaGzWeb.Registros
 {
     public partial class ReMateriales : System.Web.UI.Page
     {
-        Materiales mate = new Materiales();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!IsPostBack)
+            {
 
+            }
         }
-        public void ObtenerDatos()
+        public void ObtenerDatos(Materiales mate)
         {
             float cantidad = 0;
             float precio = 0;
@@ -29,7 +32,7 @@ namespace VentanaGzWeb.Registros
             mate.Precio = precio;
             mate.MaterialId = ConvertirId();
         }
-        public void LlenarDatos()
+        public void LlenarDatos(Materiales mate)
         {
             DetalleTextBox.Text = mate.Detalle;
             UnidadTextBox.Text = mate.Unidad;
@@ -56,20 +59,22 @@ namespace VentanaGzWeb.Registros
 
         protected void GuardarButton_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(DetalleTextBox.Text) || string.IsNullOrWhiteSpace(UnidadTextBox.Text) || string.IsNullOrWhiteSpace(CantidadTextBox.Text) || string.IsNullOrWhiteSpace(PrecioTextBox.Text))
+            Materiales mate = new Materiales();
+
+            if (string.IsNullOrWhiteSpace(DetalleTextBox.Text) || string.IsNullOrWhiteSpace(UnidadTextBox.Text) || string.IsNullOrWhiteSpace(CantidadTextBox.Text) || string.IsNullOrWhiteSpace(PrecioTextBox.Text))
             {
                 Response.Write("<script>alert('LLene Todos los Campos')</script>");
             }
             else if(BuscarTextBox.Text=="")
             {
-                ObtenerDatos();
+                ObtenerDatos(mate);
                 if(mate.Insertar())
                 {
                     Response.Write("<script>alert('Guardado')</script>");
                 }
             }else
             {
-                ObtenerDatos();
+                ObtenerDatos(mate);
                 if(mate.Editar())
                 {
                     Response.Write("<script>alert('Editado')</script>");
@@ -79,6 +84,7 @@ namespace VentanaGzWeb.Registros
 
         protected void EliminarButton_Click(object sender, EventArgs e)
         {
+            Materiales mate = new Materiales();
             if(string.IsNullOrWhiteSpace(BuscarTextBox.Text))
             {
                 Response.Write("<script>alert('Introdusca Id')</script>");
@@ -100,6 +106,7 @@ namespace VentanaGzWeb.Registros
 
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
+            Materiales mate = new Materiales();
            
             if (string.IsNullOrWhiteSpace(BuscarTextBox.Text))
             {
@@ -110,7 +117,7 @@ namespace VentanaGzWeb.Registros
 
                 if (mate.Buscar(ConvertirId()))
                 {
-                    LlenarDatos();
+                    LlenarDatos(mate);
                 }
             }
         }

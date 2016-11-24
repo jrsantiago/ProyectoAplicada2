@@ -71,7 +71,7 @@ namespace VentanaGzWeb.Registros
         public void LlenarDrowList()
         {
             DataTable dt = new DataTable();
-            Trabajos tra = new Trabajos();
+            Productos tra = new Productos();
          
             dt = tra.Listado("*", "0=0", "ORDER BY Descripcion");
             for (int i = 0; i <= dt.Rows.Count - 1; i++)
@@ -165,7 +165,7 @@ namespace VentanaGzWeb.Registros
         protected void AgregarButton_Click(object sender, EventArgs e)
         {
             
-            Trabajos tra = new Trabajos();
+            Productos tra = new Productos();
             Proyectos pro = new Proyectos();
            
             float Precio = 0;

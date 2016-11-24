@@ -15,7 +15,7 @@ namespace VentanaGzWeb.UserControl
         protected void Page_Load(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            Trabajos tra = new Trabajos();
+            Productos tra = new Productos();
 
             dt = tra.Listado("*", "0=0", "ORDER BY Descripcion");
             for (int i = 0; i <= dt.Rows.Count - 1; i++)
