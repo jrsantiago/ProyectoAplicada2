@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/InicioGz.Master" AutoEventWireup="true" CodeBehind="ReProyectoDetalle.aspx.cs" Inherits="VentanaGzWeb.Registros.ReProyectoDetalle" %>
-<%@ Register src="../UserControl/WebUserControl1.ascx" tagname="WebUserControl1" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table style="width:100%;">
         <tr>

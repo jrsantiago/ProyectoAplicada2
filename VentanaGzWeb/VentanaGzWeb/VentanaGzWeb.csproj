@@ -81,9 +81,14 @@
     <Content Include="Imagenes\Blanco-Griz.jpg" />
     <Content Include="Imagenes\Calendar-icon.png" />
     <Content Include="Imagenes\Cliente or usuario.png" />
+    <Content Include="Imagenes\Enter.png" />
     <Content Include="Imagenes\event-search-icon.png" />
     <Content Include="Imagenes\images %281%29.jpg" />
+    <Content Include="Imagenes\ImgPass.png" />
+    <Content Include="Imagenes\ImgUser.PNG" />
     <Content Include="Imagenes\Key-icon.png" />
+    <Content Include="Imagenes\LOG.jpg" />
+    <Content Include="Imagenes\LOG1.jpg" />
     <Content Include="Imagenes\Office-Customer-Male-Light-icon.png" />
     <Content Include="Imagenes\Rob-Sanders-Gear-Gear.ico" />
     <Content Include="Imagenes\SEO-icon %282%29.png" />
@@ -104,12 +109,22 @@
     <Content Include="Registros\ReUsuario.aspx" />
     <Content Include="Registros\ReProductos.aspx" />
     <Content Include="packages.config" />
+    <Content Include="ProyectoWebDataSet.xsc">
+      <DependentUpon>ProyectoWebDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="ProyectoWebDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProyectoWebDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="ProyectoWebDataSet.xss">
+      <DependentUpon>ProyectoWebDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
-    <Content Include="UserControl\WebUserControl1.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +196,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ProyectoWebDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectoWebDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Registros\ReCliente.aspx.cs">
       <DependentUpon>ReCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -215,13 +235,6 @@
     </Compile>
     <Compile Include="Registros\ReProductos.aspx.designer.cs">
       <DependentUpon>ReProductos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl\WebUserControl1.ascx.cs">
-      <DependentUpon>WebUserControl1.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserControl\WebUserControl1.ascx.designer.cs">
-      <DependentUpon>WebUserControl1.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -283,6 +296,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reportes\MaterialesReport.rdlc" />
+    <EmbeddedResource Include="Reportes\ReportProyecto.rdlc" />
     <EmbeddedResource Include="Reportes\ReportUsuario1.rdlc" />
   </ItemGroup>
   <ItemGroup>
