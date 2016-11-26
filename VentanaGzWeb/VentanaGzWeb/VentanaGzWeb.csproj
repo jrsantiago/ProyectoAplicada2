@@ -121,6 +121,7 @@
       <DependentUpon>ProyectoWebDataSet.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Reportes\ReporteMaterialesWebForm.aspx" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -235,6 +236,13 @@
     </Compile>
     <Compile Include="Registros\ReProductos.aspx.designer.cs">
       <DependentUpon>ReProductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReporteMaterialesWebForm.aspx.cs">
+      <DependentUpon>ReporteMaterialesWebForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteMaterialesWebForm.aspx.designer.cs">
+      <DependentUpon>ReporteMaterialesWebForm.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

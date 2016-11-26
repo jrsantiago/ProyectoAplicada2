@@ -44,6 +44,8 @@
             <td class="auto-style19" style="width: 1886px">&nbsp;</td>
             <td>&nbsp;
                 <asp:Button ID="ImprimirButton" runat="server"  CssClass="btn btn-success" OnClick="ImprimirButton_Click" Text="Imprimir" />
+
+
                 &nbsp;</td>
             <td>&nbsp;</td>
         </tr>

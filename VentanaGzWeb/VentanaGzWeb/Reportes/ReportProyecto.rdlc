@@ -399,10 +399,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>Proyecto</DataSetName>
-        <Top>0.07056cm</Top>
-        <Left>0.97448cm</Left>
+        <Top>0.17639cm</Top>
+        <Left>0.4085cm</Left>
         <Height>1.2cm</Height>
-        <Width>15.21614cm</Width>
+        <Width>15.21613cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -422,10 +422,10 @@
       </BottomBorder>
     </Style>
   </Body>
-  <Width>7.1705in</Width>
+  <Width>6.38592in</Width>
   <Page>
     <PageHeader>
-      <Height>3.14069cm</Height>
+      <Height>1.23649in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -454,7 +454,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox15</rd:DefaultName>
           <Top>2.06444cm</Top>
-          <Left>2.00766cm</Left>
+          <Left>2.43417cm</Left>
           <Height>0.96449cm</Height>
           <Width>8.5325cm</Width>
           <Style>
@@ -506,7 +506,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox16</rd:DefaultName>
           <Top>0.1097cm</Top>
-          <Left>3.14537cm</Left>
+          <Left>3.57188cm</Left>
           <Height>1.88419cm</Height>
           <Width>9.35463cm</Width>
           <ZIndex>1</ZIndex>
@@ -525,7 +525,7 @@
           <Value>ID0595773dtransparentglassiconpeoplethingswindow1sc52</Value>
           <Sizing>FitProportional</Sizing>
           <Top>0.40956cm</Top>
-          <Left>10.67229cm</Left>
+          <Left>11.0988cm</Left>
           <Height>1.51377cm</Height>
           <Width>1.44708cm</Width>
           <ZIndex>2</ZIndex>
@@ -554,9 +554,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox17</rd:DefaultName>
           <Top>2.17027cm</Top>
-          <Left>11.21646cm</Left>
+          <Left>11.64297cm</Left>
           <Height>0.97042cm</Height>
-          <Width>5.14583cm</Width>
+          <Width>3.98166cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -588,7 +588,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
           <Top>0.40956cm</Top>
-          <Left>14.39016cm</Left>
+          <Left>13.41438cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>4</ZIndex>
@@ -610,22 +610,131 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>2.54cm</Height>
+      <Height>1in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox1">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>El Fabricante:</Value>
+                  <Style>
+                    <TextDecoration>None</TextDecoration>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value xml:space="preserve">                                                              </Value>
+                  <Style>
+                    <TextDecoration>Underline</TextDecoration>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value>El Cliente:</Value>
+                  <Style>
+                    <TextDecoration>None</TextDecoration>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value xml:space="preserve">                                                         </Value>
+                  <Style>
+                    <TextDecoration>Underline</TextDecoration>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value xml:space="preserve">                                                                    </Value>
+                  <Style>
+                    <TextDecoration>None</TextDecoration>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value xml:space="preserve">                                                               </Value>
+                  <Style>
+                    <TextDecoration>None</TextDecoration>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value>  FAVO EXIGIR RECIBO DE PAGO</Value>
+                  <Style>
+                    <FontSize>9pt</FontSize>
+                    <TextDecoration>None</TextDecoration>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox1</rd:DefaultName>
+          <Top>1.04042cm</Top>
+          <Height>1.49958cm</Height>
+          <Width>16.22024cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox2">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Total: </Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>0.33458cm</Top>
+          <Left>13.41438cm</Left>
+          <Height>0.6cm</Height>
+          <Width>2.5cm</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
       <Style>
         <Border>
           <Style>None</Style>
         </Border>
       </Style>
     </PageFooter>
-    <PageHeight>8in</PageHeight>
-    <PageWidth>12cm</PageWidth>
-    <LeftMargin>1cm</LeftMargin>
-    <RightMargin>1cm</RightMargin>
-    <TopMargin>1cm</TopMargin>
-    <BottomMargin>1cm</BottomMargin>
-    <ColumnSpacing>0.13cm</ColumnSpacing>
+    <PageHeight>12in</PageHeight>
+    <PageWidth>8in</PageWidth>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
+    <ColumnSpacing>0.05118in</ColumnSpacing>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
@@ -724,6 +833,6 @@ CX0jYABcc5BEDIDCAMCEZgHc/S1CdfnrCnRojX/ZeyH8GACAkXZ0+aWb3Zc4piAJiH5+u+tlAdylVBgA
 TFr0L9K7z0WsDkAsE1BWZhsjgAEA2LLoP9ThuFX+/OV/IRPgj/kXRf6IP0yqEQhlAowUzwkwkWwB4/6AAYCxMgKhTs8Xf7czdMf83eV+oRLACD9M+m+laEJg2ZBALOJnRQBgAGBsopwQfhXANCD6/hCACMV/YHoNgNQwAe5jIlQABAwATJgZCFUBTGVz6t8dAoiJP2YAJvF3EBqrLyua5Yu/kfjcAgAMAGxZ5+ZG8W6HpyIdYEj83XR/aOUA4/8wTWagKAsgEbGvk/oHDADAWEQ9SuJjkzGhL7sGmAYDUGYCilL+ZeP+mAIMAMCWZwOkoAOqM8mPyB+m3RxbKV4mGFoxUEX8AQMAsOXCHzMBbmrflryOqB920m+niiEo2mejzGQABgBg201A2Wt9gyBkAGAHZACKTEHZNaIPGAAYa0NQ1QSEBN8GbgNMswmwBbdtH+8HGACAbRF9NUCU4j+XDABMowGQCmag7vMBAwCwbR2bKojsQx2bKjANoc4NMwDTIPj9ijlDAIABgIkzAjHxtjUjfzo72AmmoJ+sAQAGAMbSCFQVeDo44LfDbwIwADClnZmiMwMYeqYAQJS1tBsAAICdhuYQAAAAYAAAAAAAAwAAAAAYAAAAAMAAAAAAAAYAAAAAMAAAAACAAQAAAAAMAAAAAGAAAAAAAAMAAAAAGAAAAADAAAAAAAAGAAAAADAAAAAAgAEAAAAADAAAAABgAAAAADAAAAAAgAEAAAAADAAAAABgAAAAAAADAAAAABgAAAAAwAAAAAAABgAAAAAwAAAAAIABAAAAAAwAAAAAYAAAAAAAAwAAAAAYAAAAAMAAAAAAAAYAAAAAMAAAAAAYAAAAAMAAAAAAAAYAAAAAMAAAAACAAQAAAAAMAAAAAGAAAAAAAAMAAAAAGAAAAADAAAAAAAAGAAAAADAAAAAAgAEAAACAvvj/BwBwQuh+03ZeZwAAAABJRU5ErkJggg==</ImageData>
     </EmbeddedImage>
   </EmbeddedImages>
-  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>e51d1fd6-e74e-4b2b-8c4c-308ff5c857a4</rd:ReportID>
 </Report>

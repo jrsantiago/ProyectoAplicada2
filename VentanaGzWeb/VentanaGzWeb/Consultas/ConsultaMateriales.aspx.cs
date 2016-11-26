@@ -13,18 +13,24 @@ namespace VentanaGzWeb.Consultas
     public partial class ConsultaMaeriales : System.Web.UI.Page
     {
         Materiales mate = new Materiales();
+        public string Text { get; set; }
+        public string Orden { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
 
             }
         }
+        public ConsultaMaeriales()
+        {
+            this.Text = "";
+            this.Orden = "";
+        }
 
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
-            string Text = "";
-            string orden = "";
+
 
             if (string.IsNullOrWhiteSpace(BuscarTextBox.Text) && MaterialesDropDownList.Text != "Todos Los Materiales")
             {
@@ -32,42 +38,44 @@ namespace VentanaGzWeb.Consultas
             }
             else
             {
-                if (MaterialesDropDownList.Text == "Nombre")
-                {
-                    Text = " Where Detalle = ";
-                    orden = BuscarTextBox.Text;
-                }
-                else if (MaterialesDropDownList.Text == "Todos Los Materiales")
-                {
-                    Text = "--";
-                    orden = "--";
-                }
-                else if (MaterialesDropDownList.Text == "Id")
-                {
-                    Text = " where MaterialId = ";
-                    orden = BuscarTextBox.Text;
-                }
-
-                MaterialesGridView.DataSource = mate.Listado("*",Text,orden);
+                Ordenes();
+                MaterialesGridView.DataSource = mate.Listado("*", this.Text, this.Orden);
                 MaterialesGridView.DataBind();
             }
         }
 
         protected void ImprimirButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(BuscarTextBox.Text) && MaterialesDropDownList.Text != "Todos Los Materiales")
+            {
+                Utilitarios.ShowToastr(this, "Campo Buscar Vacio", "Mensaje", "error");
+            }
+            else
+            {
 
-            MaterialesReportViewer.LocalReport.DataSources.Clear();
-            MaterialesReportViewer.ProcessingMode = ProcessingMode.Local;
-            
+                Ordenes();
 
-            MaterialesReportViewer.LocalReport.ReportPath = @"Reportes\MaterialesReport.rdlc";
+                Response.Write("<script type='text/javascript'>detailedresults=window.open('/Reportes/ReporteMaterialesWebForm.aspx?Text= " + this.Text + "&Orden= " + this.Orden+ "');</script>");
 
-            ReportDataSource source = new ReportDataSource("MaterialesDataSet", mate.Listado("*", " " ,"--"));
-
-            MaterialesReportViewer.LocalReport.DataSources.Add(source);
-            MaterialesReportViewer.LocalReport.Refresh();
-
-        
+            }
+        }
+        public void Ordenes()
+        {
+            if (MaterialesDropDownList.Text == "Nombre")
+            {
+                this.Text = " Where Detalle = ";
+                this.Orden = BuscarTextBox.Text;
+            }
+            else if (MaterialesDropDownList.Text == "Todos Los Materiales")
+            {
+                this.Text = "--";
+                this.Orden = "--";
+            }
+            else if (MaterialesDropDownList.Text == "Id")
+            {
+                this.Text = " where MaterialId = ";
+                this.Orden = BuscarTextBox.Text;
+            }
         }
     }
 }
