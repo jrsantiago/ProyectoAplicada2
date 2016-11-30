@@ -22,13 +22,13 @@ namespace VentanaGzWeb.Consultas {
         protected global::System.Web.UI.WebControls.Image UsuarioImagen;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// ProductoDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ProductoDropDownList;
         
         /// <summary>
         /// BuscarTextBox control.
@@ -76,12 +76,12 @@ namespace VentanaGzWeb.Consultas {
         protected global::System.Web.UI.WebControls.TextBox MinimoPieTextBox;
         
         /// <summary>
-        /// GridView1 control.
+        /// ProductoGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView ProductoGridView;
     }
 }

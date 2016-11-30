@@ -12,7 +12,7 @@
                 &nbsp;<asp:Label ID="Label1" runat="server" Text="Id"></asp:Label>
 &nbsp; <asp:TextBox ID="IdTextBox" runat="server" Width="140px" Height="22px" CssClass="auto-style5"></asp:TextBox>
 &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="IdTextBox" ErrorMessage="Campo Id Vacio" ForeColor="Red" style="font-size: x-large" ValidationGroup="vg2">*</asp:RequiredFieldValidator>
-                        &nbsp;
+                        &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="IdTextBox" ErrorMessage="Solo Caracteres Numericos" ForeColor="#CC0000" style="font-size: x-large" ValidationExpression="[0-9]+" ValidationGroup="vg2">*</asp:RegularExpressionValidator>
                     <asp:Button CssClass="btn btn-primary" ID="BuscarButton" runat="server" Height="29px" OnClick="BuscarButton_Click" Text="Buscar" Width="116px" ValidationGroup="vg2" />
                 </td>
         </tr>
@@ -24,6 +24,7 @@
                     &nbsp;Nombre&nbsp;&nbsp;
                     <asp:TextBox CssClass="text-capitalize " ID="NombreTextBox" runat="server" Width="220px" ValidationGroup="vg"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="NombreTextBox" ErrorMessage="Campo Nombre Vacio" ForeColor="Red" style="font-size: x-large" ValidationGroup="vgU">*</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="NombreTextBox" ErrorMessage="Solo Caracteres de Letras" ForeColor="#CC0000" style="font-size: x-large" ValidationExpression="^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$" ValidationGroup="vgU">*</asp:RegularExpressionValidator>
                         </td>
                     </tr>
                     <tr>
@@ -31,18 +32,21 @@
                             Nombre de Usuario&nbsp; <asp:TextBox CssClass="text-capitalize " ID="UserNameTextBox" runat="server" Width="198px" ValidationGroup="vg"></asp:TextBox>
                         &nbsp;
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="UserNameTextBox" ErrorMessage="Campo Nombre De Usuario Vacio" ForeColor="Red" style="font-size: x-large" ValidationGroup="vgU">*</asp:RequiredFieldValidator>
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="UserNameTextBox" ErrorMessage="Solo Caracteres de Letras" ForeColor="#CC0000" style="font-size: x-large" ValidationExpression="^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$" ValidationGroup="vgU">*</asp:RegularExpressionValidator>
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
                         </td>
                     </tr>
                     <tr>
                         <td style="height: 35px; text-align: center;" class="auto-style14">&nbsp;&nbsp;&nbsp; Contraseña&nbsp;&nbsp; <asp:TextBox ID="ContrasenaTextBox" runat="server" Width="211px" ValidationGroup="vg" TextMode="Password"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ContrasenaTextBox" ErrorMessage="Campo Contraseña Vacio" ForeColor="Red" style="font-size: x-large" ValidationGroup="vgU">*</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="ContrasenaTextBox" ErrorMessage="Solo Caracteres de Letras" ForeColor="#CC0000" style="font-size: x-large" ValidationExpression="^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$" ValidationGroup="vgU">*</asp:RegularExpressionValidator>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />
                             </td>
                     </tr>
                     <tr>
                         <td class="auto-style14" style="height: 35px; text-align: center;"><span style="font-size: medium">&nbsp;&nbsp;&nbsp; Repita Contraseña</span><span style="font-size: x-large">&nbsp;<asp:TextBox ID="RepitContrasenaTextBox" runat="server" Width="210px" Height="21px" ValidationGroup="vg" TextMode="Password"></asp:TextBox>
                             &nbsp;<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="ContrasenaTextBox" ControlToValidate="RepitContrasenaTextBox" ErrorMessage="Contraseñas No Coinciden" ForeColor="Red" ValidationGroup="vgU">*</asp:CompareValidator>
+                            &nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </span>
                         </td>
@@ -73,7 +77,7 @@
                     <tr>
                         <td>
                             <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" style="margin-top: 0px" ValidationGroup="vgU" Width="164px" />
-                            <asp:ValidationSummary ID="ValidationSummary2" runat="server" ForeColor="Red" style="margin-top: 0px" ValidationGroup="vg2" Width="164px" />
+                            &nbsp;<asp:ValidationSummary ID="ValidationSummary2" runat="server" ForeColor="Red" style="margin-top: 0px" ValidationGroup="vg2" Width="164px" />
                         </td>
                     </tr>
                     <tr>

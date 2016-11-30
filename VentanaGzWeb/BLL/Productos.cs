@@ -132,10 +132,22 @@ namespace BLL
         {
             DbVentana cone = new DbVentana();
             DataTable dt = new DataTable();
+            string Campo = " '{0}'";
+
             string OrdenFinal = "";
             if (!Orden.Equals(""))
                 OrdenFinal = "Order by " + Orden;
-            return dt = cone.ObtenerDatos("Select "+Campos+" from Productos where "+Condicion+ Orden);
+            return dt = cone.ObtenerDatos(String.Format("Select "+Campos+" from ProductosDetalle as D inner join Productos as P on D.ProductoId = P.ProductoId "+Condicion+Campo,Orden));
+        }
+        public DataTable ListarProductos(string Campos, string Condicion, string Orden)
+        {
+            DbVentana cone = new DbVentana();
+            DataTable dt = new DataTable();
+
+            string OrdenFinal = "";
+            if (!Orden.Equals(""))
+                OrdenFinal = "Order by " + Orden;
+            return dt = cone.ObtenerDatos(String.Format("Select " + Campos + " from Productos " + Condicion +  Orden));
         }
         public float ObtenerPie(string Trabajo)
         {

@@ -70,9 +70,9 @@ namespace VentanaGzWeb.Registros
             DataTable dt = new DataTable();
             Productos tra = new Productos();
          
-            dt = tra.Listado("*", "0=0", "ORDER BY Descripcion");
+            dt = tra.ListarProductos("*", "--", "--");
             for (int i = 0; i <= dt.Rows.Count - 1; i++)
-                TrabajoDropDownList.Items.Add(Convert.ToString(tra.Listado("*", "0=0", "ORDER BY Descripcion").Rows[i]["Descripcion"]));
+                TrabajoDropDownList.Items.Add(Convert.ToString(tra.ListarProductos("*", "--", "--").Rows[i]["Descripcion"]));
         }
         public bool CamposBacios()
         {
@@ -87,7 +87,7 @@ namespace VentanaGzWeb.Registros
             }
             return Retornar;
         }      
-        public void ObtenerValores(Proyectos Pro,Materiales mat)
+        public void ObtenerValores(Proyectos Pro)
         {
           
             Pro.Fecha = FechaTextBox.Text;
@@ -99,11 +99,7 @@ namespace VentanaGzWeb.Registros
             foreach (GridViewRow row in DetalleGridView.Rows)
             {
                 Pro.AgregarTrabajos(1,Convert.ToInt32(row.Cells[0].Text), Convert.ToSingle(row.Cells[1].Text), Convert.ToSingle(row.Cells[2].Text),Convert.ToSingle(row.Cells[3].Text), Convert.ToSingle(row.Cells[4].Text));
-               // mat.ObtenerValor(row.Cells[0].Text);
-
-              //  Pie = Convert.ToSingle(row.Cells[1].Text) * Convert.ToSingle(row.Cells[2].Text) / 144;
-
-               // mat.AgregarExistencia(row.Cells[0].Text,Pie, mat.Cantidad);
+              
             }
 
         }
@@ -149,10 +145,13 @@ namespace VentanaGzWeb.Registros
             {
                if (cli.Buscar(ConvertirId()))
                 {
+                    TrabajoDropDownList.Items.Clear();
+                    LlenarDrowList();
                     ObtenerDatosCliente(cli);
                 }else
                 {
                     Utilitarios.ShowToastr(this, "Cliente No Existe", "Mensaje", "error");
+                    ClienteTextBox.Text = string.Empty;
                 }
 
             }
@@ -189,8 +188,8 @@ namespace VentanaGzWeb.Registros
                 ObtenerGridView();
                 TotalTextBox.Text = Total().ToString();
              
-                AnchoTextBox.Text = "";
-                AlturaTextBox.Text = "";
+                AnchoTextBox.Text = string.Empty;
+                AlturaTextBox.Text = string.Empty;
     
             }
             catch(Exception ex)
@@ -208,7 +207,7 @@ namespace VentanaGzWeb.Registros
             Proyectos pro = new Proyectos();
             Materiales mat = new Materiales();
       
-            ObtenerValores(pro,mat);
+            ObtenerValores(pro);
 
             if (CamposBacios())
             {
@@ -218,7 +217,7 @@ namespace VentanaGzWeb.Registros
             {
                 if (BuscarIdTextBox.Text=="")
                 {
-                    mat.AfectarExistencia();
+                   
 
                     if (pro.Insertar())
                     {

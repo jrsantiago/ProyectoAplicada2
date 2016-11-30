@@ -6,7 +6,7 @@
                 <span  style="font-size: xx-large; font-family:Arial; width: 512px;" class="auto-style16" ><asp:Image ID="UsuarioImagen" ImageUrl='~/Imagenes/SEO-icon (2).png' runat="server" Height="66px" Width="67px" /></span>
                 <table style="width:100%;">
                     <tr>
-                        <td style="font-size: large; font-family:Arial; color: #000000; height: 76px;">Buscar por: 
+                        <td style="font-size: large; font-family:Arial; color: #000000; height: 76px;">Buscar por 
                             <asp:DropDownList ID="ProyectoDropDownList" runat="server" Height="22px" Width="170px" OnSelectedIndexChanged="ProyectoDropDownList_SelectedIndexChanged" AutoPostBack="True">
                                 <asp:ListItem>Id de Cliente</asp:ListItem>
                                 <asp:ListItem Value="Id de Proyecto"></asp:ListItem>
@@ -65,13 +65,35 @@
 <ItemStyle BackColor="White" BorderWidth="2px"></ItemStyle>
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="ClienteId" HeaderStyle-BackColor="#5880D7" ItemStyle-BackColor="White" ItemStyle-BorderWidth="2px" HeaderStyle-BorderWidth="3px" HeaderText="Id Cliente" >
+<HeaderStyle BackColor="#5880D7" BorderWidth="3px"></HeaderStyle>
+
+<ItemStyle BackColor="White" BorderWidth="2px"></ItemStyle>
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="Descripcion" HeaderStyle-BackColor="#5880D7" ItemStyle-BackColor="White" ItemStyle-BorderWidth="2px" HeaderStyle-BorderWidth="3px" HeaderText="Descripción" >
+                                                <asp:BoundField DataField="ProductoId" HeaderStyle-BackColor="#5880D7" ItemStyle-BackColor="White" ItemStyle-BorderWidth="2px" HeaderStyle-BorderWidth="3px" HeaderText="ProductoId" >
+<HeaderStyle BackColor="#5880D7" BorderWidth="3px"></HeaderStyle>
+
+<ItemStyle BackColor="White" BorderWidth="2px"></ItemStyle>
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="Pie" HeaderStyle-BackColor="#5880D7" ItemStyle-BackColor="White" ItemStyle-BorderWidth="2px" HeaderStyle-BorderWidth="3px" HeaderText="Pie" />
-                                                <asp:BoundField DataField="Ancho" HeaderStyle-BackColor="#5880D7" ItemStyle-BackColor="White" ItemStyle-BorderWidth="2px" HeaderStyle-BorderWidth="3px" HeaderText="Ancho" />
-                                                <asp:BoundField DataField="Altura" HeaderStyle-BackColor="#5880D7" ItemStyle-BackColor="White" ItemStyle-BorderWidth="2px" HeaderStyle-BorderWidth="3px" HeaderText="Altura" />
-                                                <asp:BoundField DataField="Precio" HeaderStyle-BackColor="#5880D7" ItemStyle-BackColor="White" ItemStyle-BorderWidth="2px" HeaderStyle-BorderWidth="3px" HeaderText="Precio" />
+                                                <asp:BoundField DataField="Pie" HeaderStyle-BackColor="#5880D7" ItemStyle-BackColor="White" ItemStyle-BorderWidth="2px" HeaderStyle-BorderWidth="3px" HeaderText="Pie" >
+<HeaderStyle BackColor="#5880D7" BorderWidth="3px"></HeaderStyle>
+
+<ItemStyle BackColor="White" BorderWidth="2px"></ItemStyle>
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Ancho" HeaderStyle-BackColor="#5880D7" ItemStyle-BackColor="White" ItemStyle-BorderWidth="2px" HeaderStyle-BorderWidth="3px" HeaderText="Ancho" >
+<HeaderStyle BackColor="#5880D7" BorderWidth="3px"></HeaderStyle>
+
+<ItemStyle BackColor="White" BorderWidth="2px"></ItemStyle>
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Altura" HeaderStyle-BackColor="#5880D7" ItemStyle-BackColor="White" ItemStyle-BorderWidth="2px" HeaderStyle-BorderWidth="3px" HeaderText="Altura" >
+<HeaderStyle BackColor="#5880D7" BorderWidth="3px"></HeaderStyle>
+
+<ItemStyle BackColor="White" BorderWidth="2px"></ItemStyle>
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Precio" HeaderStyle-BackColor="#5880D7" ItemStyle-BackColor="White" ItemStyle-BorderWidth="2px" HeaderStyle-BorderWidth="3px" HeaderText="Precio" >
+<HeaderStyle BackColor="#5880D7" BorderWidth="3px"></HeaderStyle>
+
+<ItemStyle BackColor="White" BorderWidth="2px"></ItemStyle>
+                                                </asp:BoundField>
                                             </Columns>
                                             <EmptyDataTemplate>
                                               

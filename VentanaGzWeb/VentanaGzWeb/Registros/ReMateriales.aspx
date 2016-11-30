@@ -23,8 +23,8 @@
             </td>
             <td class="text-left" style="width: 533px; height: 74px;">
                 &nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtIdMateriales" ErrorMessage="Campo Id Material Vacio" Font-Size="X-Large" ForeColor="#CC0000" ValidationGroup="vgM">*</asp:RequiredFieldValidator>
-                &nbsp;
-                <asp:LinkButton runat="server" Text="Buscar</span>" CssClass="btn btn-primary" Width="93px" Height="32px" ID="btnBuscarMateriales" OnClick="BuscarButton_Click" ValidationGroup="vgM" />
+                &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtIdMateriales" ErrorMessage="Solo Caracteres Numerico" ForeColor="#CC0000" style="font-size: x-large" ValidationExpression="[0-9]+" ValidationGroup="vgM">*</asp:RegularExpressionValidator>
+&nbsp;<asp:LinkButton runat="server" Text="Buscar</span>" CssClass="btn btn-primary" Width="93px" Height="32px" ID="btnBuscarMateriales" OnClick="BuscarButton_Click" ValidationGroup="vgM" />
                 &nbsp;</td>
         </tr>
 
@@ -42,6 +42,7 @@
                 <br />
                 <asp:TextBox ID="txtDetalle" runat="server" Style="margin-left: 0px" Width="236px"></asp:TextBox>
             &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDetalle" ErrorMessage="Campo Descripcion Material Vacio" Font-Size="X-Large" ForeColor="#CC0000" ValidationGroup="vgM1">*</asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtDetalle" ErrorMessage="Solo Caracteres Numerico" ForeColor="#CC0000" style="font-size: x-large" ValidationExpression="^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$" ValidationGroup="vgM1">*</asp:RegularExpressionValidator>
             </td>
         </tr>
 
@@ -55,12 +56,13 @@
             <td colspan="2" style="height: 40px">
                 <asp:TextBox ID="txtUnidad" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtUnidad" ErrorMessage="Campo Unidad Vacio" Font-Size="X-Large" ForeColor="#CC0000" ValidationGroup="vgM1">*</asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtUnidad" ErrorMessage="Solo Caracteres de letras" ForeColor="#CC0000" style="font-size: x-large" ValidationExpression="^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$" ValidationGroup="vgM1">*</asp:RegularExpressionValidator>
             </td>
         </tr>
 
         <tr>
-            <td style="width: 323px; height: 28px;">
-                &nbsp;</td>
+            <td style="width: 323px; height: 35px;">
+                </td>
             <td style="height: 35px; width: 175px;" class="text-right">
                 <asp:Label ID="lblCantidad" runat="server">Cantidad</asp:Label>
             &nbsp;&nbsp;&nbsp;
@@ -68,6 +70,7 @@
             <td colspan="2" style="height: 35px">
                 <asp:TextBox ID="txtCantidad" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtCantidad" ErrorMessage="Campo Cantidad Vacio" Font-Size="X-Large" ForeColor="#CC0000" ValidationGroup="vgM1">*</asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtCantidad" ErrorMessage="Solo Caracteres Numerico" ForeColor="#CC0000" style="font-size: x-large" ValidationExpression="[0-9]+" ValidationGroup="vgM1">*</asp:RegularExpressionValidator>
             </td>
         </tr>
 
@@ -81,6 +84,7 @@
             <td colspan="2" style="height: 3px">
                 <asp:TextBox ID="txtPrecio" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtPrecio" ErrorMessage="Campo Precio Vacio" Font-Size="X-Large" ForeColor="#CC0000" ValidationGroup="vgM1">*</asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtPrecio" ErrorMessage="Solo Caracteres Numerico" ForeColor="#CC0000" style="font-size: x-large" ValidationExpression="[0-9]+" ValidationGroup="vgM1">*</asp:RegularExpressionValidator>
             </td>
         </tr>
 

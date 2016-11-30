@@ -12,21 +12,24 @@
                     <td class=" text-center" style="height: 81px"> Id&nbsp;
                         <asp:TextBox ID="BuscarTextBox"  runat="server" Width="194px"></asp:TextBox>
                         &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="BuscarTextBox" ErrorMessage="Campo Id Vacio" ForeColor="Red" style="font-size: x-large" ValidationGroup="vgIdc">*</asp:RequiredFieldValidator>
-                                           &nbsp;&nbsp;<asp:Button ID="BuscarButton" CssClass="btn btn-primary" runat="server" Height="32px" Text="Buscar" Width="96px" OnClick="BuscarButton_Click" ValidationGroup="vgIdc" />
+                                           &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="BuscarTextBox" ErrorMessage="Solo Caracteres Numericos" ForeColor="#CC0000" style="font-size: x-large" ValidationExpression="[0-9]+" ValidationGroup="vgIdc">*</asp:RegularExpressionValidator>
+                        &nbsp;<asp:Button ID="BuscarButton" CssClass="btn btn-primary" runat="server" Height="32px" Text="Buscar" Width="96px" OnClick="BuscarButton_Click" ValidationGroup="vgIdc" />
                         <br />
                         <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         Nombre <asp:TextBox ID="NombreTextBox" runat="server" Width="190px"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="NombreTextBox" ErrorMessage="Campo Nombre Vacio" ForeColor="Red" style="font-size: x-large" ValidationGroup="vgCl">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="NombreTextBox" ErrorMessage="Solo Caracteres de Letras" ForeColor="#CC0000" style="font-size: x-large" ValidationExpression="^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$" ValidationGroup="vgCl">*</asp:RegularExpressionValidator>
                         <br />
                         Telefono
                         <asp:TextBox ID="TelefonoTextBox" runat="server" Width="146px"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TelefonoTextBox" ErrorMessage="Campo Telefono Vacio" ForeColor="Red" style="font-size: x-large" ValidationGroup="vgCl">*</asp:RequiredFieldValidator>
-                        &nbsp;<br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        Dirección&nbsp;&nbsp;&nbsp; 
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TelefonoTextBox" ErrorMessage="Solo Caracteres de Letras" ForeColor="#CC0000" style="font-size: x-large" ValidationExpression="^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$" ValidationGroup="vgCl">*</asp:RegularExpressionValidator>
+                        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dirección 
                         <asp:TextBox ID="DireccionTextBox" runat="server" Width="387px" Height="22px"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="DireccionTextBox" ErrorMessage="Campo Dirección Vacio" ForeColor="Red" style="font-size: x-large" ValidationGroup="vgCl">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="DireccionTextBox" ErrorMessage="Solo Caracteres de Letras" ForeColor="#CC0000" style="font-size: x-large" ValidationExpression="^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$" ValidationGroup="vgCl">*</asp:RegularExpressionValidator>
                         <br />
                     </td>
                 </tr>
@@ -34,6 +37,7 @@
                     <td class="text-center" style="height: 36px"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         Cedula
                         <asp:TextBox ID="CedulaTextBox" runat="server" Width="204px"></asp:TextBox>
+                        <br />
                     </td>
                 </tr>
                 <tr>
@@ -51,7 +55,7 @@
         </tr>
         <tr>
             <td class="auto-style14; text-center" style="height: 100px">
-                <asp:Button CssClass="btn btn-primary" ID="GUARDARButton" runat="server" Text="Guardar" Height="33px" OnClick="GUARDARButton_Click1" />
+                <asp:Button CssClass="btn btn-primary" ID="GUARDARButton" runat="server" Text="Guardar" Height="33px" OnClick="GUARDARButton_Click1" ValidationGroup="vgCl" />
                 &nbsp;&nbsp;&nbsp; &nbsp;
                 <asp:Button ID="LimpiarButton" CssClass="btn btn-success" runat="server" Height="33px" Text="Nuevo" Width="109px" OnClick="LimpiarButton_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

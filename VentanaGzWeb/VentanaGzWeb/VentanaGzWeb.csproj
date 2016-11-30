@@ -208,9 +208,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="ProyectoWebDataSet.cs">
-      <DependentUpon>ProyectoWebDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="ProyectoWebDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

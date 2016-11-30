@@ -8,12 +8,15 @@
         </tr>
         <tr>
             <td class="text-center"><strong>Buscar Por&nbsp;
-                <asp:DropDownList ID="DropDownList1" runat="server" Height="18px" Width="101px">
+                <asp:DropDownList ID="ProductoDropDownList" runat="server" Height="26px" Width="155px">
+                    <asp:ListItem>Descripción</asp:ListItem>
+                    <asp:ListItem Value="Producto Id">Producto Id</asp:ListItem>
+                    <asp:ListItem>Todos los Productos</asp:ListItem>
                 </asp:DropDownList>
 &nbsp;
                 <asp:TextBox ID="BuscarTextBox" runat="server"></asp:TextBox>
 &nbsp;
-                <asp:Button ID="BuscarButton" CssClass="btn btn-primary" runat="server" Text="Buscar" Width="83px" />
+                <asp:Button ID="BuscarButton" CssClass="btn btn-primary" runat="server" Text="Buscar" Width="83px" OnClick="BuscarButton_Click" />
                 <br />
                 </strong></td>
         </tr>
@@ -21,7 +24,13 @@
             <td>
                 <table style="width:100%;">
                     <tr>
-                        <td style="width: 443px" class="text-right">Descripción<asp:TextBox ID="DescripcionTextBox" runat="server" ReadOnly="True" style="font-weight: bold"></asp:TextBox>
+                        <td style="width: 443px; height: 41px;" class="text-right">
+                        </td>
+                        <td style="height: 41px">
+                            </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 443px" class="text-right">Descripción <asp:TextBox ID="DescripcionTextBox" runat="server" ReadOnly="True" style="font-weight: bold" Width="135px"></asp:TextBox>
 &nbsp;<br />
                         </td>
                         <td>
@@ -33,12 +42,18 @@
                 <asp:TextBox ID="MinimoPieTextBox" runat="server" ReadOnly="True" style="font-weight: bold"></asp:TextBox>
                 </strong>
                             <br />
-                            &nbsp;</td>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 443px; height: 29px;" class="text-right">
+                        </td>
+                        <td style="height: 29px">
+                            </td>
                     </tr>
                     <tr>
                         <td style="width: 443px">&nbsp;</td>
                         <td>
-                            <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="240px" Width="388px" AutoGenerateColumns="False">
+                            <asp:GridView ID="ProductoGridView" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="240px" Width="388px" AutoGenerateColumns="False">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
                                     <asp:BoundField DataField="ProductoId" HeaderText="ProductoId" />

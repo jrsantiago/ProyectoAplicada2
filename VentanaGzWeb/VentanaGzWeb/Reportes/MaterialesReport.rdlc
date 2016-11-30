@@ -399,7 +399,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>MaterialesDataSet</DataSetName>
-        <Top>0.3704cm</Top>
+        <Top>0.37039cm</Top>
         <Left>0.42875cm</Left>
         <Height>1.67624cm</Height>
         <Width>14.96065cm</Width>
@@ -451,7 +451,7 @@
   <Width>6.37859in</Width>
   <Page>
     <PageHeader>
-      <Height>1.27663in</Height>
+      <Height>1.32899in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -493,10 +493,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox25</rd:DefaultName>
-          <Top>0.28222cm</Top>
+          <Top>0.41522cm</Top>
           <Left>2.87297cm</Left>
-          <Height>1.88736cm</Height>
-          <Width>9.83933cm</Width>
+          <Height>1.95791cm</Height>
+          <Width>8.01308cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -511,10 +511,9 @@
           <Source>Embedded</Source>
           <Value>ID0595773dtransparentglassiconpeoplethingswindow1sc52</Value>
           <Sizing>FitProportional</Sizing>
-          <Top>0.82833cm</Top>
-          <Left>10.15644cm</Left>
+          <Left>0.89672cm</Left>
           <Height>1.92333cm</Height>
-          <Width>2.24083cm</Width>
+          <Width>1.87041cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -546,7 +545,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox28</rd:DefaultName>
-          <Top>2.31069cm</Top>
+          <Top>2.44369cm</Top>
           <Left>2.45745cm</Left>
           <Height>0.93196cm</Height>
           <Width>8.4286cm</Width>
@@ -579,9 +578,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.7743in</Top>
+          <Top>0.53962in</Top>
           <Left>4.35529in</Left>
-          <Height>0.50233in</Height>
+          <Height>0.36691in</Height>
           <Width>1.87263in</Width>
           <ZIndex>3</ZIndex>
           <Style>

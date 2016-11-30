@@ -30,7 +30,7 @@
             height: 504px;
         }
         .auto-style14 {
-            height: 36px;
+            height: 198px;
             width: 1024px;
         }
         .auto-style15 {
@@ -94,6 +94,7 @@
             <li id="ConsultaUsuarioWeb" runat="server"><a href="/Consultas/ConsultaUsuario.aspx">Usuario</a></li>
             <li ><a href="/Consultas/ConsultaClientes.aspx">Cliente</a></li>
             <li><a href="/Consultas/ConsultaMateriales.aspx">Materiales</a></li>
+             <li><a href="/Consultas/ConsultaProducto.aspx">Productos</a></li>
               <li><a href="/Consultas/ConsultaProyecto.aspx">Proyecto</a></li>
                <li><a href="/Consultas/ConsultaPresupuesto.aspx">Presupuesto</a></li>
           </ul>
