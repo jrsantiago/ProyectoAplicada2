@@ -127,25 +127,6 @@ namespace BLL
 
             return dt;
         } 
-        public bool AfectarExistencia()
-        {
-           
-            DbVentana cone = new DbVentana();
-            bool Retornar = false;
-            try
-            {
-                foreach (Materiales item in this.Listar)
-                {
-                    Retornar = cone.Ejecutar(String.Format("Update Materiales set Cantidad={0} where Detalle='{1}'", item.Cantidad - item.Existencia, item.Detalle));
-
-                }
-            }catch(Exception)
-            {
-
-            }
-            return Retornar;
-
-        }
         public void AgregarExistencia(string material, float restar, float cantidad)
         {
             this.Listar.Add(new Materiales(material, restar, cantidad));
