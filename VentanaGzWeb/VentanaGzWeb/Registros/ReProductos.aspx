@@ -2,9 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table style="width:100%;">
         <tr>
-            <td class="text-center" style="height: 142px"> <asp:Image ID="ProductoImagen" runat="server" Height="77px" ImageUrl='~/Imagenes/SEO-icon%20(2).png' Width="77px" />&nbsp;&nbsp;&nbsp;
+            <td class="text-center" style="height: 142px"> <asp:Image ID="ProductoImagen" runat="server" Height="117px" ImageUrl='~/Imagenes/gear-icon.png' Width="137px" />&nbsp;&nbsp;&nbsp;
                 <br />
-                <span  style="font-size: x-large"> Registro Productos</span></td>
+                <span  style="font-size: x-large; font-family:Forte; color: #000066;"> <strong>Registro Productos</strong></span></td>
         </tr>
         <tr>
             <td class="text-center"  style="height: 76px">
@@ -24,18 +24,18 @@
                         <td class="text-center" style="height: 37px">Descripción&nbsp;&nbsp;
                             <asp:TextBox ID="DescripcionTextBox" runat="server" Width="221px"></asp:TextBox>
 &nbsp;
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="DescripcionTextBox" ErrorMessage="Campo Descripcion Vacio" ForeColor="#CC0000" style="font-size: x-large" ValidationGroup="vg">*</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="DescripcionTextBox" ErrorMessage="Campo Descripcion Vacio" ForeColor="#CC0000" style="font-size: x-large" ValidationGroup="vgP">*</asp:RequiredFieldValidator>
                             <br />
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             Precio pieProducto&nbsp;&nbsp;
                             <asp:TextBox ID="traTextBox" runat="server" Width="105px"></asp:TextBox>
 &nbsp;
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="traTextBox" ErrorMessage="Campo Precio Pie Producto Vacio" ForeColor="#CC0000" style="font-size: x-large" ValidationGroup="vg">*</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="traTextBox" ErrorMessage="Campo Precio Pie Producto Vacio" ForeColor="#CC0000" style="font-size: x-large" ValidationGroup="vgP">*</asp:RequiredFieldValidator>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Minimo Pie&nbsp;&nbsp; <asp:TextBox ID="MinimoPieTextBox" runat="server" Width="105px"></asp:TextBox>
 &nbsp;
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="traTextBox" ErrorMessage="Campo Precio tra Vacio" ForeColor="#CC0000" style="font-size: x-large" ValidationGroup="vg">*</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="traTextBox" ErrorMessage="Campo Precio tra Vacio" ForeColor="#CC0000" style="font-size: x-large" ValidationGroup="vgP">*</asp:RequiredFieldValidator>
                         &nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
@@ -49,7 +49,7 @@
 &nbsp;&nbsp;&nbsp;Relacion&nbsp;&nbsp;<asp:DropDownList ID="RelacionlDropDownList0" runat="server" Height="22px" Width="110px">
                                 <asp:ListItem Value="Ancho"></asp:ListItem>
                                 <asp:ListItem Value="Altura"></asp:ListItem>
-                                <asp:ListItem Value="Ninguna">Nada</asp:ListItem>
+                                <asp:ListItem Value="Nada">Nada</asp:ListItem>
                             </asp:DropDownList>
 &nbsp;&nbsp;&nbsp;&nbsp;
                             <asp:Button ID="AgregarButton" runat="server" Text="Agregar" OnClick="AgregarButton_Click" />
@@ -69,7 +69,7 @@
                            
                             <asp:GridView ID="ProductoGridView" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" Width="200px">
                                 <Columns>
-                                    <asp:BoundField DataField="Material" HeaderText="Material" />
+                                    <asp:BoundField DataField="MaterialId" HeaderText="MaterialId" />
                                     <asp:BoundField DataField="Relacion" HeaderText="Relacion" />
                                 </Columns>
                                 <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
@@ -90,12 +90,12 @@
                     <tr>
                         <td class="auto-style14" style="height: 37px">
                             <asp:ValidationSummary ID="ValidationSummary2" runat="server" ForeColor="#CC0000" ValidationGroup="vg1" />
-                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="#CC0000" Height="61px" ValidationGroup="vg" />
+                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="#CC0000" Height="61px" ValidationGroup="vgP" />
  </td>
                     </tr>
                     <tr>
                         <td class="text-center">
-                    <asp:Button CssClass="btn btn-primary" ID="GuardarButton" runat="server" Height="29px" OnClick="GuardarButton_Click" Text="Guardar" Width="115px" ValidationGroup="vg" />
+                    <asp:Button CssClass="btn btn-primary" ID="GuardarButton" runat="server" Height="29px" OnClick="GuardarButton_Click" Text="Guardar" Width="115px" ValidationGroup="vgP" />
 &nbsp;
                     <asp:Button CssClass="btn btn-success" ID="LimpiarButton" runat="server" Height="29px" Text="Limpiar" Width="116px" OnClick="LimpiarButton_Click" />
                     &nbsp;&nbsp;<asp:Button CssClass="btn btn-danger" ID="EliminarButton" runat="server" Height="29px" Text="Eliminar" Width="116px" OnClick="EliminarButton_Click" ValidationGroup="vg1" />

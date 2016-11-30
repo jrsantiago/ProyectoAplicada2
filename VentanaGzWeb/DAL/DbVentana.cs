@@ -85,5 +85,27 @@ namespace DAL
             }
             return retornar;
         }
+
+        public DataSet GetData(DataTable dt)
+        {
+            int id = 0;
+            DbVentana cone = new DbVentana();
+
+            if (dt.Rows.Count > 0)
+            {
+                id = (int)dt.Rows[0]["UsuariosId"];
+            }
+
+
+            string Cs = ConfigurationManager.ConnectionStrings["VentanaDb"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(Cs))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("Select * from Usuarios where UsuariosId=" + id, con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+                return ds;
+            }
+        }
     }
 }

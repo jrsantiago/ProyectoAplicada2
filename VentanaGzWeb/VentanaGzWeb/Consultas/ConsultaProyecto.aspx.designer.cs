@@ -49,6 +49,15 @@ namespace VentanaGzWeb.Consultas {
         protected global::System.Web.UI.WebControls.Button BuscarButton;
         
         /// <summary>
+        /// FechaDesdeLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FechaDesdeLabel;
+        
+        /// <summary>
         /// PriFechaTextBox0 control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace VentanaGzWeb.Consultas {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton PrimeraImageUpdateButton;
+        
+        /// <summary>
+        /// FechaHastaLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FechaHastaLabel;
         
         /// <summary>
         /// SegFechaTextBox control.

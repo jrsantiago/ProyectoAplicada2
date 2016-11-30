@@ -120,7 +120,7 @@
   <xs:element name="ProyectoWebDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ProyectoWebDataSet" msprop:Generator_UserDSName="ProyectoWebDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Proyectos" msprop:Generator_TableClassName="ProyectosDataTable" msprop:Generator_TableVarName="tableProyectos" msprop:Generator_TablePropName="Proyectos" msprop:Generator_RowDeletingName="ProyectosRowDeleting" msprop:Generator_RowChangingName="ProyectosRowChanging" msprop:Generator_RowEvHandlerName="ProyectosRowChangeEventHandler" msprop:Generator_RowDeletedName="ProyectosRowDeleted" msprop:Generator_UserTableName="Proyectos" msprop:Generator_RowChangedName="ProyectosRowChanged" msprop:Generator_RowEvArgName="ProyectosRowChangeEvent" msprop:Generator_RowClassName="ProyectosRow">
+        <xs:element name="Proyectos" msprop:Generator_TableClassName="ProyectosDataTable" msprop:Generator_TableVarName="tableProyectos" msprop:Generator_RowChangedName="ProyectosRowChanged" msprop:Generator_TablePropName="Proyectos" msprop:Generator_RowDeletingName="ProyectosRowDeleting" msprop:Generator_RowChangingName="ProyectosRowChanging" msprop:Generator_RowEvHandlerName="ProyectosRowChangeEventHandler" msprop:Generator_RowDeletedName="ProyectosRowDeleted" msprop:Generator_RowClassName="ProyectosRow" msprop:Generator_UserTableName="Proyectos" msprop:Generator_RowEvArgName="ProyectosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ProyectoId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnProyectoId" msprop:Generator_ColumnPropNameInRow="ProyectoId" msprop:Generator_ColumnPropNameInTable="ProyectoIdColumn" msprop:Generator_UserColumnName="ProyectoId" type="xs:int" />
@@ -130,7 +130,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ProyectosDetalle" msprop:Generator_TableClassName="ProyectosDetalleDataTable" msprop:Generator_TableVarName="tableProyectosDetalle" msprop:Generator_TablePropName="ProyectosDetalle" msprop:Generator_RowDeletingName="ProyectosDetalleRowDeleting" msprop:Generator_RowChangingName="ProyectosDetalleRowChanging" msprop:Generator_RowEvHandlerName="ProyectosDetalleRowChangeEventHandler" msprop:Generator_RowDeletedName="ProyectosDetalleRowDeleted" msprop:Generator_UserTableName="ProyectosDetalle" msprop:Generator_RowChangedName="ProyectosDetalleRowChanged" msprop:Generator_RowEvArgName="ProyectosDetalleRowChangeEvent" msprop:Generator_RowClassName="ProyectosDetalleRow">
+        <xs:element name="ProyectosDetalle" msprop:Generator_TableClassName="ProyectosDetalleDataTable" msprop:Generator_TableVarName="tableProyectosDetalle" msprop:Generator_RowChangedName="ProyectosDetalleRowChanged" msprop:Generator_TablePropName="ProyectosDetalle" msprop:Generator_RowDeletingName="ProyectosDetalleRowDeleting" msprop:Generator_RowChangingName="ProyectosDetalleRowChanging" msprop:Generator_RowEvHandlerName="ProyectosDetalleRowChangeEventHandler" msprop:Generator_RowDeletedName="ProyectosDetalleRowDeleted" msprop:Generator_RowClassName="ProyectosDetalleRow" msprop:Generator_UserTableName="ProyectosDetalle" msprop:Generator_RowEvArgName="ProyectosDetalleRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ProyectoDetalleId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnProyectoDetalleId" msprop:Generator_ColumnPropNameInRow="ProyectoDetalleId" msprop:Generator_ColumnPropNameInTable="ProyectoDetalleIdColumn" msprop:Generator_UserColumnName="ProyectoDetalleId" type="xs:int" />
@@ -162,7 +162,7 @@
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK__Proyectos__Proye__318258D2" msdata:parent="Proyectos" msdata:child="ProyectosDetalle" msdata:parentkey="ProyectoId" msdata:childkey="ProyectoId" msprop:Generator_UserChildTable="ProyectosDetalle" msprop:Generator_ChildPropName="GetProyectosDetalleRows" msprop:Generator_UserRelationName="FK__Proyectos__Proye__318258D2" msprop:Generator_ParentPropName="ProyectosRow" msprop:Generator_RelationVarName="relationFK__Proyectos__Proye__318258D2" msprop:Generator_UserParentTable="Proyectos" />
+      <msdata:Relationship name="FK__Proyectos__Proye__318258D2" msdata:parent="Proyectos" msdata:child="ProyectosDetalle" msdata:parentkey="ProyectoId" msdata:childkey="ProyectoId" msprop:Generator_UserChildTable="ProyectosDetalle" msprop:Generator_ChildPropName="GetProyectosDetalleRows" msprop:Generator_UserRelationName="FK__Proyectos__Proye__318258D2" msprop:Generator_RelationVarName="relationFK__Proyectos__Proye__318258D2" msprop:Generator_UserParentTable="Proyectos" msprop:Generator_ParentPropName="ProyectosRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

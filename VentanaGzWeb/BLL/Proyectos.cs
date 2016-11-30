@@ -15,7 +15,7 @@ namespace BLL
         public string Fecha { get; set; }
         public float Total { get; set; }
         public List <ProyectosDetalle> Detalle { get; set; }
-        public List<Longitud> ListaLongitud { get; set; }
+        public List<ProductosDetalle> ListaMateriales { get; set; }
 
         public Proyectos()
         {
@@ -25,16 +25,22 @@ namespace BLL
             this.Fecha = "";
             this.Total = 0;
             this.Detalle = new List<ProyectosDetalle>();
-            this.ListaLongitud = new List<Longitud>();
+            this.ListaMateriales = new List<ProductosDetalle>();
+           
         }
-        public void AgregarTrabajos(int ProyectoId,string Descripcion, float Ancho, float Altura,float Pie, float Precio)
+        public void AgregarTrabajos(int ProyectoId,int ProductoId, float Ancho, float Altura,float Pie, float Precio)
         {
-            this.Detalle.Add(new ProyectosDetalle(ProyectoId, Descripcion, Ancho, Altura, Pie, Precio));
+            this.Detalle.Add(new ProyectosDetalle(ProyectoId, ProductoId, Ancho, Altura, Pie, Precio));
+        }
+        public void AgregarConduse(int ProductoId, int cantidad)
+        {
+            this.ListaMateriales.Add(new ProductosDetalle(ProductoId, cantidad));
         }
 
         public override bool Insertar()
         {
             DbVentana cone = new DbVentana();
+            DataTable dt = new DataTable();
             int Retornar = 0;
         
             object Identity;
@@ -44,10 +50,39 @@ namespace BLL
                 int.TryParse(Identity.ToString(), out Retornar);
                 if (Retornar > 0)
                 {
+                    object Identity2;
+                    int Retornar2 = 0;
                     foreach (ProyectosDetalle item in this.Detalle)
                     {
-                        cone.Ejecutar(String.Format("Insert Into ProyectosDetalle(ProyectoId,Descripcion,Pie,Ancho,Altura,Precio) Values({0},'{1}',{2},{3},{4},{5})", Retornar, item.Descripcion, item.Pie, item.Ancho, item.Altura, item.Precio));
+                        //areglar ete insert (poner id del producto)
+                        Identity2 = cone.ObtenerValor(String.Format("Insert Into ProyectosDetalle(ProyectoId,ProductoId,Pie,Ancho,Altura,Precio) Values({0},'{1}',{2},{3},{4},{5}) SELECT @@Identity", Retornar, item.ProductoId, item.Pie, item.Ancho, item.Altura, item.Precio));
+                        int.TryParse(Identity2.ToString(), out Retornar2);
+
+                        //con el id anterior del producto hacer un select a a la tabla productodetalle y llenar ListaMateriales
+                       dt = cone.ObtenerDatos(String.Format("Select * from ProductosDetalle where ProductoId ={0}", item.ProductoId));
+
+                           foreach (DataRow row in dt.Rows)
+                            {
+                               this.ListaMateriales.Add(new ProductosDetalle(Convert.ToInt32(row[2]),Convert.ToInt32(row[3])));
+                            }
+                      
+                         //recorrer lista materiales para insertar cada material y el calculo de su valor o cantidad en la tabla pryecto conduce
+                        foreach(ProductosDetalle item2 in this.ListaMateriales)
+                        {
+                            if(item2.Asociacion == 0)
+                            {
+                                item2.Cantidad = item.Ancho/12;
+                            }else
+                            if(item2.Asociacion == 1)
+                            {
+                                item2.Cantidad = item.Altura/12;
+                            }
+               
+                            cone.Ejecutar(String.Format("Insert Into ProyectoPresupuesto(ProyectoId,MaterialId,Cantidad) Values({0},{1},{2}) ", Retornar, item2.MaterialId,item2.Cantidad));
+                        }
                     }
+
+                 
                    
                 }
                 return Retornar > 0;
@@ -61,28 +96,59 @@ namespace BLL
         public override bool Editar()
         {
             DbVentana cone = new DbVentana();
-            int Retornar = 0;
-            object Identity;
+            DataTable dt = new DataTable();
+          
+            bool Retornar = false;
             try
             {
-               Identity = cone.Ejecutar(String.Format("Update Proyectos set Descripcion='{0}',Fecha='{1}',Total={2} where ProyectoId={3} SELECT @@Identity", this.Descripcion, this.Fecha, this.Total,this.ProyectoId));
-                int.TryParse(Identity.ToString(), out Retornar);
-                if (Retornar>0)
-                {
-                    cone.Ejecutar(String.Format("Delete from ProyectosDetalle where ProyectoId = {0}", this.ProyectoId));
-                    foreach(ProyectosDetalle item in Detalle)
-                    {
-                        cone.Ejecutar(String.Format("Insert Into ProyectosDetalle(ProyectoId,Descripcion,Pie,Ancho,Altura,Cantidad,Precio) Values({0},'{1}',{2},{3},{4},{6})", Retornar, item.Descripcion, item.Pie, item.Ancho, item.Altura,item.Precio));
-                    }   
-                    
+                 Retornar = cone.Ejecutar(String.Format("Update Proyectos set Fecha = Convert(datetime,'{0}',5),Total={1} where ProyectoId={2}", this.Fecha, this.Total,this.ProyectoId));
+              
+                  if (Retornar)
+                   {
+                       cone.Ejecutar(String.Format("Delete from ProyectosDetalle where ProyectoId = {0}", this.ProyectoId));
+                       cone.Ejecutar(String.Format("Delete from ProyectoPresupuesto where ProyectoId = {0}", this.ProyectoId));
 
+                    foreach (ProyectosDetalle item in this.Detalle)
+                    {
+                        cone.Ejecutar(String.Format("Insert Into ProyectosDetalle(ProyectoId,ProductoId,Pie,Ancho,Altura,Precio) Values({0},{1},{2},{3},{4},{5})", this.ProyectoId, item.ProductoId, item.Pie, item.Ancho, item.Altura, item.Precio));
+
+
+
+                        dt = cone.ObtenerDatos(String.Format("Select * from ProductosDetalle where ProductoId ={0}", item.ProductoId));
+
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            this.ListaMateriales.Add(new ProductosDetalle(Convert.ToInt32(row[2]), Convert.ToInt32(row[3])));
+                        }
+
+                        //recorrer lista materiales para insertar cada material y el calculo de su valor o cantidad en la tabla pryecto conduce
+                        foreach (ProductosDetalle item2 in this.ListaMateriales)
+                        {
+                            if (item2.Asociacion == 0)
+                            {
+                                item2.Cantidad = item.Ancho / 12;
+                            }
+                            else
+                            if (item2.Asociacion == 1)
+                            {
+                                item2.Cantidad = item.Altura / 12;
+                            }else
+                            {
+                                item2.Cantidad = 1;
+                            }
+
+                            cone.Ejecutar(String.Format("Insert Into ProyectoPresupuesto(ProyectoId,MaterialId,Cantidad) Values({0},{1},{2}) ", this.ProyectoId, item2.MaterialId, item2.Cantidad));
+
+                        }
+
+                    }
                 }
 
             }catch(Exception ex)
             {
                 throw ex;
             }
-            return Retornar>0;
+            return Retornar;
 
         }
 
@@ -93,9 +159,10 @@ namespace BLL
 
             try
             {
-                Retornar = cone.Ejecutar(String.Format("Delete from Proyectos where ProyectoId={0}; " + "Delete from ProyectosDetalle where ProyectoId={0}", this.ProyectoId));
-
-            }catch(Exception ex)
+                Retornar = cone.Ejecutar(String.Format("Delete from ProyectoPresupuesto where ProyectoId ={0};" + "Delete from ProyectosDetalle where ProyectoId={0}; " + "Delete from Proyectos where ProyectoId={0}; ", this.ProyectoId));
+               
+            }
+            catch(Exception ex)
             {
                 throw ex;
             }
@@ -123,7 +190,7 @@ namespace BLL
                 
                     foreach (DataRow row in dtDetalle.Rows)
                     {
-                        AgregarTrabajos(1,row["Descripcion"].ToString(),Convert.ToSingle(row["Ancho"]), Convert.ToSingle(row["Altura"]),Convert.ToSingle(row["Pie"]), Convert.ToSingle(row["Precio"]));
+                        AgregarTrabajos(1,Convert.ToInt32(row["ProductoId"]),Convert.ToSingle(row["Ancho"]), Convert.ToSingle(row["Altura"]),Convert.ToSingle(row["Pie"]), Convert.ToSingle(row["Precio"]));
                     }
             
                 }
@@ -176,10 +243,7 @@ namespace BLL
             return Rtotal;
          
         }
-        public void AgregarLongitud(string Trabajo, float Ancho, float Altura)
-        {
-            this.ListaLongitud.Add(new Longitud(Trabajo, Ancho, Altura));
-        }
+      
         public DataTable ListaConsulta(string Campos, string Condicion, string Orden)
         {
             DbVentana cone = new DbVentana();
@@ -191,7 +255,19 @@ namespace BLL
 
             return dt = cone.ObtenerDatos(String.Format("Select " + Campos + " from ProyectosDetalle as D inner join Proyectos P on D.ProyectoId = P.ProyectoId " + Condicion + Orden));
         }
-   
+        public DataTable ListarPresupuesto(string Campos, string Condicion, string Orden)
+        {
+            DbVentana cone = new DbVentana();
+            DataTable dt = new DataTable();
+
+            string OrdenFinal = "";
+            if (!Orden.Equals(""))
+                OrdenFinal = "Order by " + Orden;
+
+            return dt = cone.ObtenerDatos(String.Format("Select " + Campos + " from ProyectoPresupuesto as O inner join Proyectos P on O.ProyectoId = P.ProyectoId inner join Materiales M on M.MaterialId = O.MaterialId " + Condicion + Orden+ " GROUP BY M.Detalle ORDER BY M.Detalle;"));
+        }
+
+
 
     }
 }

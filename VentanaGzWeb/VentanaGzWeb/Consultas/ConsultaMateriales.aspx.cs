@@ -19,7 +19,7 @@ namespace VentanaGzWeb.Consultas
         {
             if (!IsPostBack)
             {
-
+                ImprimirButton.Visible = false;
             }
         }
         public ConsultaMaeriales()
@@ -30,8 +30,6 @@ namespace VentanaGzWeb.Consultas
 
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
-
-
             if (string.IsNullOrWhiteSpace(BuscarTextBox.Text) && MaterialesDropDownList.Text != "Todos Los Materiales")
             {
                 Utilitarios.ShowToastr(this, "Campo Buscar Vacio", "Mensaje", "error");
@@ -41,6 +39,15 @@ namespace VentanaGzWeb.Consultas
                 Ordenes();
                 MaterialesGridView.DataSource = mate.Listado("*", this.Text, this.Orden);
                 MaterialesGridView.DataBind();
+            }
+
+            if(MaterialesGridView.Rows.Count>0)
+            {
+                ImprimirButton.Visible = true;
+
+            }else
+            {
+                ImprimirButton.Visible = false;
             }
         }
 

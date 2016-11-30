@@ -64,7 +64,7 @@ namespace BLL
             bool Retornar = false;
             try
             {
-                Retornar = cone.Ejecutar(String.Format("Delete from Clientes where ClienteId= ", this.ClienteId));
+                Retornar = cone.Ejecutar(String.Format("Delete from Clientes where ClienteId= "+ this.ClienteId));
 
             }catch(Exception ex)
             {

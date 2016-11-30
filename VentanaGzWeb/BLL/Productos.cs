@@ -11,6 +11,7 @@ namespace BLL
     {
         public int ProductoId { get; set; }
         public int Clienteid { get; set; }
+        public int  MateriaId { get; set; }
         public string Descripcion { get; set; }
         public float Pie {get; set;}
         public float MinimoPie { get; set; }
@@ -26,9 +27,9 @@ namespace BLL
           
             this.Detalle = new List<ProductosDetalle>();
         }
-        public void AgregarProducto(string Material,int Asociacion)
+        public void AgregarProducto(int MaterialId,int Asociacion)
         {
-            this.Detalle.Add(new ProductosDetalle(Material, Asociacion));
+            this.Detalle.Add(new ProductosDetalle(MaterialId, Asociacion));
         }
         public override bool Insertar()
         {
@@ -45,7 +46,7 @@ namespace BLL
                  
                     foreach (ProductosDetalle item in this.Detalle)
                     {
-                      cone.Ejecutar(String.Format("Insert into ProductosDetalle(ProductoId,Detalle,Asociacion) Values({0},'{1}',{2})", Retornar, item.Detalle, item.Asociacion));
+                      cone.Ejecutar(String.Format("Insert into ProductosDetalle(ProductoId,MaterialId,Asociacion) Values({0},{1},{2})", Retornar, item.MaterialId, item.Asociacion));
                     }
                 }
 
@@ -71,7 +72,7 @@ namespace BLL
                    
                         foreach (ProductosDetalle item in this.Detalle)
                         {
-                            cone.Ejecutar(String.Format("Insert into ProductosDetalle(ProductoId,Detalle,Asociacion) Values({0},'{1}',{2})", this.ProductoId, item.Detalle, item.Asociacion));
+                            cone.Ejecutar(String.Format("Insert into ProductosDetalle(ProductoId,MaterialId,Asociacion) Values({0},{1},{2})", this.ProductoId, item.MaterialId, item.Asociacion));
                         }
                     
                 }
@@ -116,7 +117,7 @@ namespace BLL
                     dtDetalle = cone.ObtenerDatos(String.Format("Select * from ProductosDetalle where ProductoId={0}", IdBuscado));
                     foreach(DataRow row in dtDetalle.Rows)
                     {
-                        AgregarProducto(row["Detalle"].ToString(),(int)row["Asociacion"]);
+                        AgregarProducto((int)row["MaterialId"],(int)row["Asociacion"]);
                     }
                 }
                 return dt.Rows.Count>0;
@@ -165,6 +166,25 @@ namespace BLL
 
             }
             return pie;
+        }
+        public void ObtenerProducto(string Producto)
+        {
+            DataTable dt = new DataTable();
+            DbVentana cone = new DbVentana();
+
+            try
+            {
+                dt = cone.ObtenerDatos(String.Format("Select * from Productos where Descripcion = '{0}'", Producto));
+                if(dt.Rows.Count>0)
+                {
+                    this.ProductoId = (int)dt.Rows[0]["ProductoId"];
+                }
+                        
+
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

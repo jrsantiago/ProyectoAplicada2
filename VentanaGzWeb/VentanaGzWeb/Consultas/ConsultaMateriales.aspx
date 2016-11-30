@@ -2,22 +2,31 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table style="width: 100%; height: 489px;">
         <tr>
-            <td class="auto-style14" style="height: 74px; width: 1886px"></td>
-            <td class="auto-style14" style="height: 74px">&nbsp; Buscar Por
+            <td class="auto-style14" style="height: 74px; width: 1345px">&nbsp;</td>
+            <td class="auto-style14" style="height: 74px; width: 808px;"><span style="font-size: xx-large; font-family:Forte; color: #0B0664;"><strong>Consulta </strong>M<span style="font-weight: bold">ateriales</span></span>&nbsp; <span class="auto-style16" style="font-size: xx-large; font-family:Arial">
+                <asp:Image ID="UsuarioImagen" runat="server" Height="98px" ImageUrl="~/Imagenes/SEO-icon (2).png" Width="103px" />
+                </span>
+            </td>
+            <td class="auto-style14" style="height: 74px">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style14" style="height: 74px; width: 1345px"></td>
+            <td class="auto-style14" style="height: 74px; width: 808px;">&nbsp; Buscar Por
                 <asp:DropDownList ID="MaterialesDropDownList" runat="server" Height="22px" Width="184px">
                     <asp:ListItem Value="Todos Los Materiales">Todos Los Materiales</asp:ListItem>
                     <asp:ListItem>Nombre</asp:ListItem>
                     <asp:ListItem Value="Id">Id</asp:ListItem>
                 </asp:DropDownList>
-&nbsp;&nbsp; <asp:TextBox ID="BuscarTextBox" runat="server"></asp:TextBox>
+&nbsp;&nbsp; <asp:TextBox ID="BuscarTextBox" runat="server" Width="78px"></asp:TextBox>
 &nbsp;&nbsp;
+                </td>
+            <td class="auto-style14" style="height: 74px">
                 <asp:Button ID="BuscarButton" CssClass="btn btn-primary" runat="server" OnClick="BuscarButton_Click" Text="Buscar" />
             </td>
-            <td class="auto-style14" style="height: 74px"></td>
         </tr>
         <tr>
-            <td class="modal-sm" style="width: 1886px; height: 319px"></td>
-            <td style="height: 319px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <td class="modal-sm" style="width: 1345px; height: 319px"></td>
+            <td style="height: 319px; width: 808px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:GridView ID="MaterialesGridView" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Height="270px" Width="464px">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
@@ -41,8 +50,8 @@
             <td style="height: 319px"></td>
         </tr>
         <tr>
-            <td class="auto-style19" style="width: 1886px">&nbsp;</td>
-            <td>&nbsp;
+            <td class="auto-style19" style="width: 1345px">&nbsp;</td>
+            <td style="width: 808px">&nbsp;
                 <asp:Button ID="ImprimirButton" runat="server"  CssClass="btn btn-success" OnClick="ImprimirButton_Click" Text="Imprimir" />
 
 
@@ -50,24 +59,8 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style19" style="width: 1886px">&nbsp;</td>
-            <td>
+            <td style="width: 1345px">
                 <table style="width: 100%;">
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <rsweb:ReportViewer ID="MaterialesReportViewer" runat="server" Height="369px" Width="630px">
-                            </rsweb:ReportViewer>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:ScriptManager ID="ScriptManager1" runat="server">
-                            </asp:ScriptManager>
-                        </td>
-                        <td>&nbsp;</td>
-                    </tr>
                     <tr>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
@@ -75,7 +68,7 @@
                     </tr>
                 </table>
             </td>
-            <td>&nbsp;</td>
+            <td style="width: 808px">&nbsp;</td>
         </tr>
     </table>
 </asp:Content>

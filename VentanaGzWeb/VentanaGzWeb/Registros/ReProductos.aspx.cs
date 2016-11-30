@@ -47,9 +47,7 @@ namespace VentanaGzWeb.Registros
                     asociado = "Nada";
                 }
 
-
-
-                dt.Rows.Add(item.Detalle, item.Asociacion);
+                dt.Rows.Add(item.MaterialId, asociado);
                 ViewState["Detalle"] = dt;
                 ObtenerGrid();
             }
@@ -78,7 +76,7 @@ namespace VentanaGzWeb.Registros
                 {
                     asociado = 2;
                 }
-                tra.AgregarProducto(row.Cells[0].Text,asociado);
+                tra.AgregarProducto(Convert.ToInt32(row.Cells[0].Text),asociado);
             }
         }
         public int ConvertirId()
@@ -111,7 +109,7 @@ namespace VentanaGzWeb.Registros
         public void LlenarGridView()
         {
             DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[2] { new DataColumn("Material"), new DataColumn("Relacion") });
+            dt.Columns.AddRange(new DataColumn[2] { new DataColumn("MaterialId"), new DataColumn("Relacion") });
             ViewState["Detalle"] = dt;
         }
         public void LlenarDropDownMaterial()
@@ -199,13 +197,16 @@ namespace VentanaGzWeb.Registros
 
         protected void AgregarButton_Click(object sender, EventArgs e)
         {
+            Materiales mate = new Materiales();
+
             try {
                   DataTable dt = (DataTable)ViewState["Detalle"];
                   DataRow row;
 
                   row = dt.NewRow();
 
-                  row["Material"] = MaterialesDropDownList.Text;
+                mate.ObtenerValor(MaterialesDropDownList.Text);
+                row["MaterialId"] = mate.MaterialId;
                   row["Relacion"] = RelacionlDropDownList0.Text;
                   dt.Rows.Add(row);
                   ViewState["Detalle"] = dt;

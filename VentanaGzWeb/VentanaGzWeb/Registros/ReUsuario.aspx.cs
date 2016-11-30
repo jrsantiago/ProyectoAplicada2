@@ -11,7 +11,6 @@ namespace VentanaGzWeb.Registros
     public partial class RUsuario : System.Web.UI.Page
     {
 
-       
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -23,7 +22,7 @@ namespace VentanaGzWeb.Registros
         public void ObtenereDatos(Usuario usu)
         {
          
-            if (usu.Restriccion == 1)
+            if (usu.Restriccion == 0)
             {
                 RestriccionDropDownList.Text = "Administrador";
             }
@@ -31,7 +30,7 @@ namespace VentanaGzWeb.Registros
             {
                 RestriccionDropDownList.Text = "Usuario";
             }
-            NombreTextBox.Text = usu.UserName;
+            UserNameTextBox.Text = usu.UserName;
             ContrasenaTextBox.Text = usu.Contrasena;
             NombreTextBox.Text = usu.Nombre;
 
@@ -50,10 +49,10 @@ namespace VentanaGzWeb.Registros
 
                 usu.Imagenes = path;
             }
-            usu.UserName = NombreTextBox.Text;
+            usu.UserName = UserNameTextBox.Text;
             usu.Contrasena = ContrasenaTextBox.Text;
             usu.Nombre = NombreTextBox.Text;         
-            usu.UsuarioId =   ConvertirId();
+           
         }
         public int ConvertirId()
         {
@@ -64,10 +63,11 @@ namespace VentanaGzWeb.Registros
         }
         public void Limpiar()
         {
-            IdTextBox.Text = "";
-            NombreTextBox.Text = "";
-            ContrasenaTextBox.Text = "";
-            NombreTextBox.Text = "";
+            IdTextBox.Text = string.Empty;
+            NombreTextBox.Text = string.Empty;
+            ContrasenaTextBox.Text = string.Empty;
+            UserNameTextBox.Text = string.Empty;
+            RepitContrasenaTextBox.Text = string.Empty;
         }
      
 
@@ -81,7 +81,7 @@ namespace VentanaGzWeb.Registros
             }
             else
             {
-                Response.Write("<script>alert('Debe insertar un Id')</script>");
+                Utilitarios.ShowToastr(this, "Error Id", "Mensaje", "error");
             }
         }
 
@@ -89,22 +89,17 @@ namespace VentanaGzWeb.Registros
         {
             Usuario usu = new Usuario();
 
-        
-           
+
             
                 LlenarValor(usu);
                 if (usu.ValidarUserNombre(UserNameTextBox.Text) == UserNameTextBox.Text)
                 {
-                    Utilitarios.ShowToastr(this, "Error Nombre Usuario Intente Con Otro", "Mensaje", "error");
+                    Utilitarios.ShowToastr(this, "Error Nombre Usuario", "Mensaje", "error");
 
                 }
                 else if (usu.ValidarContrasena(ContrasenaTextBox.Text) == ContrasenaTextBox.Text)
                 {
-                    Utilitarios.ShowToastr(this, "Error Contraseña Intente Otra Contraseña", "Mensaje", "error");
-
-                }
-                else if (ContrasenaTextBox.Text != RepitContrasenaTextBox.Text)
-                {
+                    Utilitarios.ShowToastr(this, "Error Contraseña", "Mensaje", "error");
 
                 }
                 else
@@ -113,7 +108,6 @@ namespace VentanaGzWeb.Registros
                     if (IdTextBox.Text == "")
                     {
 
-
                         if (usu.Insertar())
                         {
                             
@@ -121,7 +115,8 @@ namespace VentanaGzWeb.Registros
                     }
                     else
                     {
-                      
+                   
+                    usu.UsuarioId = ConvertirId();
                         if (usu.Editar())
                         {
                             

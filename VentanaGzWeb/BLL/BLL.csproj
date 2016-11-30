@@ -43,8 +43,8 @@
   <ItemGroup>
     <Compile Include="ClaseMaestra.cs" />
     <Compile Include="Clientes.cs" />
-    <Compile Include="Longitud.cs" />
     <Compile Include="Materiales.cs" />
+    <Compile Include="ProyectoPresupuesto.cs" />
     <Compile Include="Proyectos.cs" />
     <Compile Include="Productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

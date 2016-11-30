@@ -12,23 +12,69 @@ namespace VentanaGzWeb.Consultas
 {
     public partial class ConsultaProyecto : System.Web.UI.Page
     {
+
+        public string Text { get; set; }
+        public string orden { get; set; }
+
+       public ConsultaProyecto()
+        {
+            this.Text = "";
+            this.orden = "";
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
                 ProyectoCalendar.Visible = false;
                 ProyectoSegundoCalendar.Visible = false;
+                ImprimirButton.Visible = false;
+               
 
+                FalseControl();
+               
             }
         }
+        public void OrdenInsert()
+        {
 
+            if (ProyectoDropDownList.Text == "Fecha")
+            {
+                this.Text = " where P.Fecha ";
+                this.orden = " between Convert(datetime,'" + PriFechaTextBox0.Text + "',5) AND Convert(datetime,'" + SegFechaTextBox.Text + "',5) ";
+            }
+
+
+            else if (ProyectoDropDownList.Text == "Id de Cliente")
+            {
+                this.Text = " where P.ClienteId = ";
+                this.orden = BuscarTextBox.Text;
+            }
+
+            else if (ProyectoDropDownList.Text == "Id de Proyecto")
+            {
+                this.Text = " where D.ProyectoId = ";
+                this.orden = BuscarTextBox.Text;
+            }
+
+        }
+        public void FalseControl()
+        {
+            PrimeraImageUpdateButton.Visible = false;
+            SegundaImageUpdateButton0.Visible = false;
+
+            PriFechaTextBox0.Visible = false;
+            SegFechaTextBox.Visible = false;
+
+            FechaDesdeLabel.Visible = false;
+            FechaHastaLabel.Visible = false;
+
+        }
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
             DbVentana cone = new DbVentana();
             Proyectos pro = new Proyectos();
             DataTable dt = new DataTable();
-            string Text = "";
-            string orden = "";
+            
 
             if (string.IsNullOrWhiteSpace(BuscarTextBox.Text) && ProyectoDropDownList.Text != "Fecha")
             {
@@ -36,36 +82,24 @@ namespace VentanaGzWeb.Consultas
             }
             else
             {
-               
 
-                    if (ProyectoDropDownList.Text == "Fecha")
-                    {
-                        Text = " where P.Fecha ";
-                        orden = " between Convert(datetime,'" + PriFechaTextBox0.Text + "',5) AND Convert(datetime,'" + SegFechaTextBox.Text + "',5) ";
-                    }
+                    OrdenInsert();
 
-
-                    else if (ProyectoDropDownList.Text == "Id de Cliente")
-                    {
-                        Text = " where P.ClienteId = ";
-                        orden = BuscarTextBox.Text;
-                    }
-
-                    else if (ProyectoDropDownList.Text == "Id de Proyecto")
-                    {
-                        Text = " where D.ProyectoId = ";
-                        orden = BuscarTextBox.Text;
-                    }
-
-                    ProyectoGridView.DataSource = pro.ListaConsulta("*", Text, orden);
+                    ProyectoGridView.DataSource = pro.ListaConsulta("*", this.Text, this.orden);
                     ProyectoGridView.DataBind();
 
                 if (ProyectoGridView.Rows.Count == 0)
                 {
                     Utilitarios.ShowToastr(this, "Id incorrecto", "Mensaje", "error");
                 }
-               
 
+                if (ProyectoGridView.Rows.Count > 0)
+                {
+                    ImprimirButton.Visible = true;
+                }else
+                {
+                    ImprimirButton.Visible = false;
+                }
 
             }
         }
@@ -107,17 +141,42 @@ namespace VentanaGzWeb.Consultas
 
         protected void ProyectoDropDownList_SelectionChanged(object sender, EventArgs e)
         {
-            if(ProyectoDropDownList.SelectedIndex == 2)
+
+       
+        }
+
+        protected void ImprimirButton_Click(object sender, EventArgs e)
+        {
+            if (ProyectoGridView.Rows.Count==0)
             {
-                PrimeraImageUpdateButton.Visible = true;
-                SegundaImageUpdateButton0.Visible = true;
+                Utilitarios.ShowToastr(this, "Error", "Mensaje", "error");
             }
             else
             {
-                PrimeraImageUpdateButton.Visible = false;
-                SegundaImageUpdateButton0.Visible = false;
-                PriFechaTextBox0.Visible = false;
-                SegFechaTextBox.Visible = false;
+
+                OrdenInsert();
+
+                Response.Write("<script type='text/javascript'>detailedresults=window.open('/Reportes/ReporteProyectoWebForm.aspx?Text= " + this.Text + "&Orden= " + this.orden + "');</script>");
+
+            }
+        }
+
+        protected void ProyectoDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ProyectoDropDownList.SelectedValue == "Fecha")
+            {
+                PrimeraImageUpdateButton.Visible = true;
+                SegundaImageUpdateButton0.Visible = true;
+
+                PriFechaTextBox0.Visible = true;
+                SegFechaTextBox.Visible = true;
+
+                FechaDesdeLabel.Visible = true;
+                FechaHastaLabel.Visible = true;
+            }
+            else
+            {
+                FalseControl();
             }
         }
     }

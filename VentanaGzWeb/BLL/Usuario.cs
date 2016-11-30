@@ -54,7 +54,7 @@ namespace BLL
             DbVentana cone = new DbVentana();
             try
             {
-                retornar = cone.Ejecutar(String.Format("Update Usuarios set Contrasena='{0}',UserName='{1}',Nombre='{2}',Restriccion = {3} WHERE UsuarioId = {4}", this.Contrasena, this.UserName, this.Nombre, this.Restriccion, this.UsuarioId));
+                retornar = cone.Ejecutar(String.Format("Update Usuarios set Contrasena='{0}',UserName='{1}',Nombre='{2}',Restriccion = {3}, Imagenes ='{4}' WHERE UsuariosId = {5}", this.Contrasena, this.UserName, this.Nombre, this.Restriccion,this.Imagenes, this.UsuarioId));
 
             }
             catch (Exception ex)
@@ -70,7 +70,7 @@ namespace BLL
             DbVentana cone = new DbVentana();
             try
             {
-                Retornar = cone.Ejecutar(String.Format("Delete From Usuarios where UsuarioId ={0}", this.UsuarioId));
+                Retornar = cone.Ejecutar(String.Format("Delete From Usuarios where UsuariosId ={0}", this.UsuarioId));
 
             }
             catch (Exception ex)
@@ -84,7 +84,7 @@ namespace BLL
         {
             DbVentana cone = new DbVentana();
            
-            bool Retornar = true;
+            bool Retornar = false;
             try
             {
                 dt = cone.ObtenerDatos(String.Format("Select * from Usuarios where UsuariosId = {0}", IdBuscado));
@@ -95,6 +95,7 @@ namespace BLL
                     this.UserName = dt.Rows[0]["UserName"].ToString();
                     this.Nombre = dt.Rows[0]["Nombre"].ToString();
                     this.Restriccion = (int)dt.Rows[0]["Restriccion"];
+                    Retornar = true;
                 }
 
             }
@@ -116,29 +117,18 @@ namespace BLL
                 OrdenFinal = "Order by " + Orden;
 
 
-            return dt= cone.ObtenerDatos(String.Format("Select " + Campos + " from Usuarios "+Condicion+campo,Orden));
-        }
-        public DataSet GetData(DataTable dt)
-        {
-            int id = 0;
-            DbVentana cone = new DbVentana();
+            dt= cone.ObtenerDatos(String.Format("Select " + Campos + " from Usuarios "+Condicion+campo,Orden));
 
-            if(dt.Rows.Count > 0)
+            if(dt.Rows.Count>0)
             {
-                id = (int)dt.Rows[0]["UsuariosId"];
-            }
-            
+                this.Restriccion = (int)dt.Rows[0]["Restriccion"];
+                this.UserName = dt.Rows[0]["UserName"].ToString();
 
-            string Cs = ConfigurationManager.ConnectionStrings["VentanaDb"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(Cs))
-            {
-                SqlDataAdapter da = new SqlDataAdapter("Select * from Usuarios where UsuariosId=" + id, con);
-                DataSet ds = new DataSet();
-                da.Fill(ds);
-
-                return ds;
             }
+            return dt;
         }
+       
+        
         public string ValidarUserNombre(string UserName)
         {
             string Validar = "";
@@ -163,6 +153,21 @@ namespace BLL
             }
             return Validar;
         }
+        public static DataTable ConocerUsuario(string UserName, string Contrasena)
+        {
+            DataTable dt = new DataTable();
+            DbVentana cone = new DbVentana();
 
+            try
+            {
+
+                dt = cone.ObtenerDatos(String.Format("Select * from Usuarios where UserName ='{0}' and Contrasena ='{1}' ", UserName, Contrasena));
+
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+            return dt;
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace VentanaGzWeb.Registros
             {
                 FechaTextBox.Text = DateTime.Now.ToString("dd/MM/yy");
                 FechaTextBox.ReadOnly = true;
-                AddColumnas();
+                LLenarGridview();
             }
 
             LlenarDrowList();
@@ -45,16 +45,15 @@ namespace VentanaGzWeb.Registros
 
             return Total;
         }         
-        public void AddColumnas()
+        public void LLenarGridview()
         {
             DataTable dt = new DataTable();
-            DataTable dt2 = new DataTable();
+        
        
-            dt.Columns.AddRange(new DataColumn[5] { new DataColumn("Descripcion"), new DataColumn("Ancho"), new DataColumn("Altura"), new DataColumn("Pie"), new DataColumn("Precio")});
+            dt.Columns.AddRange(new DataColumn[5] { new DataColumn("ProductoId"), new DataColumn("Ancho"), new DataColumn("Altura"), new DataColumn("Pie"), new DataColumn("Precio")});
             ViewState["Detalle"] = dt;
 
-            dt2.Columns.AddRange(new DataColumn[4] { new DataColumn("Descripcion"), new DataColumn("AnchoTotal"), new DataColumn("AlturaTotal"), new DataColumn("PieTotal") });
-            ViewState["Resumen"] = dt2;
+           
         }     
         public void ObtenerDatosCliente(Clientes cli)
         {
@@ -65,8 +64,6 @@ namespace VentanaGzWeb.Registros
             DetalleGridView.DataSource = (DataTable)ViewState["Detalle"];
             DetalleGridView.DataBind();
 
-            ResumenGridView.DataSource = (DataTable)ViewState["Resumen"];
-            ResumenGridView.DataBind();
         }
         public void LlenarDrowList()
         {
@@ -90,18 +87,23 @@ namespace VentanaGzWeb.Registros
             }
             return Retornar;
         }      
-        public void ObtenerValores(Proyectos Pro)
+        public void ObtenerValores(Proyectos Pro,Materiales mat)
         {
           
             Pro.Fecha = FechaTextBox.Text;
             Pro.Total = ConvertirTotal();
             Pro.ClienteId = ConvertirId();
-     
+            Pro.ProyectoId = ConvertirIdProyecto();
 
-            foreach(GridViewRow row in DetalleGridView.Rows)
+
+            foreach (GridViewRow row in DetalleGridView.Rows)
             {
-                Pro.AgregarTrabajos(1, row.Cells[0].Text, Convert.ToSingle(row.Cells[1].Text), Convert.ToSingle(row.Cells[2].Text),Convert.ToSingle(row.Cells[3].Text), Convert.ToSingle(row.Cells[4].Text));
-           
+                Pro.AgregarTrabajos(1,Convert.ToInt32(row.Cells[0].Text), Convert.ToSingle(row.Cells[1].Text), Convert.ToSingle(row.Cells[2].Text),Convert.ToSingle(row.Cells[3].Text), Convert.ToSingle(row.Cells[4].Text));
+               // mat.ObtenerValor(row.Cells[0].Text);
+
+              //  Pie = Convert.ToSingle(row.Cells[1].Text) * Convert.ToSingle(row.Cells[2].Text) / 144;
+
+               // mat.AgregarExistencia(row.Cells[0].Text,Pie, mat.Cantidad);
             }
 
         }
@@ -109,12 +111,11 @@ namespace VentanaGzWeb.Registros
         {
             DataTable dt = (DataTable)ViewState["Detalle"];
             BuscarClienteTextBox.Text = pro.ClienteId.ToString();
-            FechaTextBox.Text = pro.Fecha.ToString();
             TotalTextBox.Text = pro.Total.ToString();
 
             foreach(var item in pro.Detalle)
             {
-                dt.Rows.Add(item.Descripcion, item.Ancho, item.Altura, item.Pie, item.Precio);
+                dt.Rows.Add(item.ProductoId, item.Ancho, item.Altura, item.Pie, item.Precio);
                 ViewState["Detalle"] = dt;
                 ObtenerGridView();
             }
@@ -127,22 +128,16 @@ namespace VentanaGzWeb.Registros
         } 
         public void Limpiar()
         {
-            ClienteTextBox.Text = "";           
-            BuscarClienteTextBox.Text = "";
-            TotalTextBox.Text = "";
+            ClienteTextBox.Text = string.Empty;
+            BuscarClienteTextBox.Text = string.Empty;
+            TotalTextBox.Text = string.Empty;
             DetalleGridView.DataSource = null;
             DetalleGridView.DataBind();
+            BuscarIdTextBox.Text = string.Empty;
+            ObtenerGridView();
+            LLenarGridview();
 
-
-        }
-
-        public void CalcularArea(DataTable dt)
-        {
-            foreach(DataRow row in dt.Rows)
-            {
-
-            }
-        }
+        }  
         protected void BuscarClienteButton_Click(object sender, EventArgs e)
         {
             Clientes cli = new Clientes();
@@ -167,18 +162,20 @@ namespace VentanaGzWeb.Registros
             
             Productos tra = new Productos();
             Proyectos pro = new Proyectos();
+       
            
             float Precio = 0;
      
-            //ViewState
           
             try
             {
                 DataTable dt = (DataTable)ViewState["Detalle"];
                  DataRow row;
                 row = dt.NewRow();
-             
-                row["Descripcion"] = TrabajoDropDownList.Text;
+
+                tra.ObtenerProducto(TrabajoDropDownList.Text);
+
+                row["ProductoId"] = tra.ProductoId;
                 row["Ancho"] = AnchoTextBox.Text;
                 row["Altura"] = AlturaTextBox.Text;
                 row["Pie"] = tra.ObtenerPie(TrabajoDropDownList.Text);
@@ -187,41 +184,14 @@ namespace VentanaGzWeb.Registros
                 dt.Rows.Add(row);
                 ViewState["Detalle"] = dt;
 
-                          
-      
                 TrabajoDropDownList.Items.Clear();
                 LlenarDrowList();
+                ObtenerGridView();
+                TotalTextBox.Text = Total().ToString();
+             
                 AnchoTextBox.Text = "";
                 AlturaTextBox.Text = "";
-
-                DataTable dt2 = (DataTable)ViewState["Resumen"];
-                DataRow row2;
-                row2 = dt2.NewRow();
-                bool Exist = false;
-
-                foreach(DataRow item in dt2.Rows)
-                {
-                    if (item["Descripcion"].ToString() == row["Descripcion"].ToString())
-                    {
-                        item["AnchoTotal"] = Convert.ToSingle(item["AnchoTotal"].ToString()) + Convert.ToSingle(row["Ancho"]);
-                        item["AlturaTotal"] = Convert.ToSingle(item["AlturaTotal"].ToString()) + Convert.ToSingle(row["Altura"]);
-                        item["PieTotal"] = Convert.ToSingle(item["PieTotal"].ToString()) + Convert.ToSingle(row["Pie"]);
-                        Exist = true;
-                    }
-                }
-
-                if (!Exist)
-                {
-                    row2["Descripcion"] = row["Descripcion"];
-                    row2["AnchoTotal"] = row["Ancho"];
-                    row2["AlturaTotal"] = row["Altura"];
-                    row2["PieTotal"] = row["Pie"];
-                    dt2.Rows.Add(row2);
-                }
-               
-                ViewState["Resumen"] = dt2;
-                ObtenerGridView();
-          TotalTextBox.Text = Total().ToString();
+    
             }
             catch(Exception ex)
             {
@@ -230,22 +200,15 @@ namespace VentanaGzWeb.Registros
         }
         protected void DetalleGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //decimal Total = 0;
-          
-            //if(e.Row.RowType == DataControlRowType.DataRow)
-            //{
-            //    Total += DataBinder.Eval(e.Row.DataItem,"Precio");
-            //}else if(e.Row.RowType == DataControlRowType.Footer)
-            //{
-            //    e.Row.Cells[6].Text = Total.ToString();
-            //}
+           
         }
 
         protected void GuardarButton_Click(object sender, EventArgs e)
         {
             Proyectos pro = new Proyectos();
+            Materiales mat = new Materiales();
       
-            ObtenerValores(pro);
+            ObtenerValores(pro,mat);
 
             if (CamposBacios())
             {
@@ -255,7 +218,7 @@ namespace VentanaGzWeb.Registros
             {
                 if (BuscarIdTextBox.Text=="")
                 {
-
+                    mat.AfectarExistencia();
 
                     if (pro.Insertar())
                     {
@@ -263,7 +226,7 @@ namespace VentanaGzWeb.Registros
                     }
                 }
                 else
-                {
+                {                  
                     if (pro.Editar())
                     {
                         
@@ -272,23 +235,6 @@ namespace VentanaGzWeb.Registros
                 Utilitarios.ShowToastr(this, "Guardado", "Mensaje", "success");
             }
             
-        }
-
-        protected void EliminarButton_Click(object sender, EventArgs e)
-        {
-            Proyectos pro = new Proyectos();
-            if(string.IsNullOrWhiteSpace(BuscarClienteTextBox.Text))
-            {
-                Utilitarios.ShowToastr(this, "Error", "Mensaje", "error");
-            }
-            else
-            {
-                if(pro.Eliminar())
-                {
-                    Utilitarios.ShowToastr(this, "Eliminado", "Mensaje", "success");
-                    Limpiar();
-                }
-            }
         }
 
         protected void LimpiarButton_Click1(object sender, EventArgs e)
@@ -310,12 +256,34 @@ namespace VentanaGzWeb.Registros
 
                 if(pro.Buscar(ConvertirIdProyecto()))
                 {
+                    ObtenerGridView();
+                    LLenarGridview();
+
                     LlenarValores(pro);
 
                 }
                 else
                 {
                     Utilitarios.ShowToastr(this, "Id Incorrecto", "Mensaje", "error");
+                    Limpiar();
+                }
+            }
+        }
+
+        protected void EliminarButton_Click1(object sender, EventArgs e)
+        {
+            Proyectos pro = new Proyectos();
+            if (string.IsNullOrWhiteSpace(BuscarClienteTextBox.Text))
+            {
+                Utilitarios.ShowToastr(this, "Error", "Mensaje", "error");
+            }
+            else
+            {
+                pro.ProyectoId = ConvertirIdProyecto();
+                if (pro.Eliminar())
+                {
+                    Utilitarios.ShowToastr(this, "Eliminado", "Mensaje", "success");
+                    Limpiar();
                 }
             }
         }

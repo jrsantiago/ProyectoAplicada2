@@ -32,9 +32,6 @@ namespace VentanaGzWeb.Reportes
             MaterialesReportViewer.LocalReport.DataSources.Add(source);
             MaterialesReportViewer.LocalReport.Refresh();
             }
-  
-
-
 
         }
     }

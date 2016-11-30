@@ -14,11 +14,14 @@ namespace VentanaGzWeb.Consultas
 {
     public partial class ConsUsuario : System.Web.UI.Page
     {
-     
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (!IsPostBack)
+            {
+
+            }
         }
     
         protected void BuscarButton_Click(object sender, EventArgs e)
@@ -57,9 +60,7 @@ namespace VentanaGzWeb.Consultas
                     orden= BuscarTextBox.Text;
                 }
 
-             
-
-                DataSet ds = usu.GetData(usu.Listado("*",Text,orden));
+                DataSet ds = cone.GetData(usu.Listado("*",Text,orden));
 
                 Repeater.DataSource = ds;
                 Repeater.DataBind();

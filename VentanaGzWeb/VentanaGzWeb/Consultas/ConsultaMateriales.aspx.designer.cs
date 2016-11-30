@@ -13,6 +13,15 @@ namespace VentanaGzWeb.Consultas {
     public partial class ConsultaMaeriales {
         
         /// <summary>
+        /// UsuarioImagen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image UsuarioImagen;
+        
+        /// <summary>
         /// MaterialesDropDownList control.
         /// </summary>
         /// <remarks>
@@ -56,23 +65,5 @@ namespace VentanaGzWeb.Consultas {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ImprimirButton;
-        
-        /// <summary>
-        /// MaterialesReportViewer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer MaterialesReportViewer;
-        
-        /// <summary>
-        /// ScriptManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
     }
 }

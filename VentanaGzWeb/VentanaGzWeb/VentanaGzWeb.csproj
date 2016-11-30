@@ -66,6 +66,8 @@
     </Content>
     <Content Include="Consultas\ConsultaClientes.aspx" />
     <Content Include="Consultas\ConsultaMateriales.aspx" />
+    <Content Include="Consultas\ConsultaPresupuesto.aspx" />
+    <Content Include="Consultas\ConsultaProducto.aspx" />
     <Content Include="Consultas\ConsultaProyecto.aspx" />
     <Content Include="Consultas\ConsultaUsuario.aspx" />
     <Content Include="css\bootstrap-theme.css" />
@@ -83,6 +85,7 @@
     <Content Include="Imagenes\Cliente or usuario.png" />
     <Content Include="Imagenes\Enter.png" />
     <Content Include="Imagenes\event-search-icon.png" />
+    <Content Include="Imagenes\gear-icon.png" />
     <Content Include="Imagenes\images %281%29.jpg" />
     <Content Include="Imagenes\ImgPass.png" />
     <Content Include="Imagenes\ImgUser.PNG" />
@@ -102,7 +105,6 @@
     <Content Include="js\npm.js" />
     <Content Include="js\toastr.js" />
     <Content Include="js\toastr.min.js" />
-    <Content Include="log.aspx" />
     <Content Include="Registros\ReCliente.aspx" />
     <Content Include="Registros\ReMateriales.aspx" />
     <Content Include="Registros\ReProyectoDetalle.aspx" />
@@ -122,6 +124,8 @@
     </Content>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Reportes\ReporteMaterialesWebForm.aspx" />
+    <Content Include="Reportes\ReportePresupuestoWebForm.aspx" />
+    <Content Include="Reportes\ReporteProyectoWebForm.aspx" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -142,6 +146,20 @@
     </Compile>
     <Compile Include="Consultas\ConsultaMateriales.aspx.designer.cs">
       <DependentUpon>ConsultaMateriales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\ConsultaPresupuesto.aspx.cs">
+      <DependentUpon>ConsultaPresupuesto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultas\ConsultaPresupuesto.aspx.designer.cs">
+      <DependentUpon>ConsultaPresupuesto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\ConsultaProducto.aspx.cs">
+      <DependentUpon>ConsultaProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultas\ConsultaProducto.aspx.designer.cs">
+      <DependentUpon>ConsultaProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Consultas\ConsultaProyecto.aspx.cs">
       <DependentUpon>ConsultaProyecto.aspx</DependentUpon>
@@ -179,13 +197,6 @@
     <Compile Include="InicioGz.Master.designer.cs">
       <DependentUpon>InicioGz.Master</DependentUpon>
     </Compile>
-    <Compile Include="log.aspx.cs">
-      <DependentUpon>log.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="log.aspx.designer.cs">
-      <DependentUpon>log.aspx</DependentUpon>
-    </Compile>
     <Compile Include="MaterialesDbVentanaGzWebDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -196,6 +207,9 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ProyectoWebDataSet.cs">
+      <DependentUpon>ProyectoWebDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="ProyectoWebDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -243,6 +257,20 @@
     </Compile>
     <Compile Include="Reportes\ReporteMaterialesWebForm.aspx.designer.cs">
       <DependentUpon>ReporteMaterialesWebForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReportePresupuestoWebForm.aspx.cs">
+      <DependentUpon>ReportePresupuestoWebForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReportePresupuestoWebForm.aspx.designer.cs">
+      <DependentUpon>ReportePresupuestoWebForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReporteProyectoWebForm.aspx.cs">
+      <DependentUpon>ReporteProyectoWebForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteProyectoWebForm.aspx.designer.cs">
+      <DependentUpon>ReporteProyectoWebForm.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -304,6 +332,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reportes\MaterialesReport.rdlc" />
+    <EmbeddedResource Include="Reportes\ReportPresupuesto.rdlc" />
     <EmbeddedResource Include="Reportes\ReportProyecto.rdlc" />
     <EmbeddedResource Include="Reportes\ReportUsuario1.rdlc" />
   </ItemGroup>

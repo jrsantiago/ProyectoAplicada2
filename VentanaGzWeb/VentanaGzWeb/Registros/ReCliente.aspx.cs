@@ -11,12 +11,16 @@ namespace VentanaGzWeb.Registros
 {
     public partial class ReCliente : System.Web.UI.Page
     {
-        Clientes cli = new Clientes();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!IsPostBack)
+            {
+
+            }
            
         }
-        public void LLenarCampos()
+        public void LLenarCampos(Clientes cli)
         {
             NombreTextBox.Text = cli.Nombre;
             TelefonoTextBox.Text = cli.Telefono;
@@ -24,26 +28,15 @@ namespace VentanaGzWeb.Registros
             CedulaTextBox.Text = cli.Cedula;
             EmailTextBox.Text = cli.Email;
         }
-        public bool ObtenerDatos()
+        public void ObtenerDatos(Clientes cli)
         {
-            bool Retornar = false;
-          
-            if(string.IsNullOrWhiteSpace(NombreTextBox.Text) || string.IsNullOrWhiteSpace(TelefonoTextBox.Text) || string.IsNullOrWhiteSpace(DireccionTextBox.Text))
-            {
-               
-
-            }else
-            {
                cli.Nombre = NombreTextBox.Text;
                cli.Telefono = TelefonoTextBox.Text;
                cli.Direccion = DireccionTextBox.Text;
                cli.Cedula = CedulaTextBox.Text;
                cli.Email = EmailTextBox.Text;
-               Retornar = true;
-            }
-          
+           
 
-            return Retornar;
         }
         public void Limpiar()
         {
@@ -64,53 +57,22 @@ namespace VentanaGzWeb.Registros
         }
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
-         
+            Clientes cli = new Clientes();
                 int id = 0;
                 id = convertirId();
 
                 if(cli.Buscar(id))
                 {
-                    LLenarCampos();
-                    
-                }
-            }  
+                    LLenarCampos(cli);
 
-        protected void GuardarButton_Click(object sender, EventArgs e)
-        {
-          
-
-            if (ObtenerDatos() == false)
-            {
-                
             }
             else
-            {
-                ObtenerDatos();
-                if (string.IsNullOrWhiteSpace(BuscarTextBox.Text))
-                {
-                    if (NombreTextBox.Text == cli.ValidarCliente(NombreTextBox.Text))
-                    {
-                        Response.Write("<script>alert('Nombre de Cliente Ya Existe')</script>");
-                    }
-                    else
-                    {
-                        if (cli.Insertar())
-                        {
-                            Response.Write("<script>alert('Guardado')</script>");
-                        }
-                    }
-                }
-                else
-                {
-                    if (cli.Editar())
-                    {
-                        Response.Write("<script>alert('Guardado')</script>");
-                    }
-                }
+              {
+                Utilitarios.ShowToastr(this, "Error Id", "Mensaje", "error");
+
+             }
             }
-
-        }
-
+ 
         protected void LimpiarButton_Click(object sender, EventArgs e)
         {
             Limpiar();
@@ -118,21 +80,52 @@ namespace VentanaGzWeb.Registros
 
         protected void EliminarButton_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(BuscarTextBox.Text))
-            {
-                //Mensaje de llenar
-            }else
-            {
+            Clientes cli = new Clientes();
+            cli.ClienteId = convertirId();
                 if(cli.Eliminar())
                 {
-                    Response.Write("<script>alert('Eiminado')</script>");
+                    Utilitarios.ShowToastr(this, "Eliminado", "Mensaje", "success");
                     Limpiar();
                 }
                 else
                 {
-               
+                   Utilitarios.ShowToastr(this, "error", "Mensaje", "error");
 
                 }
+            
+        }
+
+        protected void GUARDARButton_Click1(object sender, EventArgs e)
+        {
+            Clientes cli = new Clientes();
+            ObtenerDatos(cli);
+
+
+            if (NombreTextBox.Text == cli.ValidarCliente(NombreTextBox.Text))
+            {
+                Utilitarios.ShowToastr(this, "Error Nombre de Cliente", "Mensaje", "error");
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(BuscarTextBox.Text))
+                {
+
+
+                    if (cli.Insertar())
+                    {
+
+                    }
+
+                }
+                else
+                {
+                    cli.ClienteId = convertirId();
+                    if (cli.Editar())
+                    {
+
+                    }
+                }
+                Utilitarios.ShowToastr(this, "Guardado", "Mensaje", "success");
             }
         }
     }
